@@ -41,7 +41,7 @@ body {
 .navbar ul li a,
 .navbar ul li button {
     display: block;
-    padding: 10px 15px;   /* bigger padding for better spacing */
+    padding: 8px 10px;   /* bigger padding for better spacing */
     font-size: 1rem;
     border: none;
     background: none;
@@ -55,7 +55,7 @@ body {
 /* Hover effect for buttons/links */
 .navbar ul li a:hover,
 .navbar ul li button:hover {
-    background-color: #f0f0f0;  /* subtle highlight */
+    background-color: #000;  /* subtle highlight */
     color: #000;
 }
 
@@ -195,6 +195,7 @@ footer {
   text-align: center;
   padding: 1.5rem;
 }
+
 
 
 
