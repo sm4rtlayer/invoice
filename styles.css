@@ -21,7 +21,7 @@ body {
 }
 
 .navbar .logo img {
-  height: 32px;
+  height: 50px;
   width: auto;
 }
 
@@ -100,7 +100,7 @@ header.hero {
 }
 
 .brand-list li a img {
-  height: 50px;
+  height: 64px;
   width: auto;
   display: block;
   transition: transform 0.3s;
@@ -151,6 +151,7 @@ header.hero {
     gap: 1rem;
   }
 }
+
 
 
 
