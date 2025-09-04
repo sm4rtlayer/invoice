@@ -17,6 +17,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+  color: white;
   background: #000000; /* Assuming dark background for white text contrast */
 }
 
@@ -174,6 +175,7 @@ footer {
   text-align: center;
   padding: 1.5rem;
 }
+
 
 
 
