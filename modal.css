@@ -60,3 +60,29 @@
     font-size: 24px;
     cursor: pointer;
 }
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: #000; /* text black */
+    line-height: 1.6;
+}
+
+.contact-list .icon {
+    font-size: 1.3rem;
+    margin-right: 10px;
+}
+
+.contact-list .title {
+    font-weight: 700;
+    margin-right: 6px;
+    min-width: 80px; /* aligns the titles neatly */
+}
