@@ -80,7 +80,9 @@ header.hero {
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  background-color: #e0dfdf; /* fallback */
+
+    padding-top: 10px;      /* adjust height */
+  background-color: #e0dfdf; /* grey bar */
 }
 
 .hero-text {
@@ -209,4 +211,5 @@ ul.icon-list li a img {
     font-size: 0.9rem;
   }
 }
+
 
