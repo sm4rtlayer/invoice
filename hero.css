@@ -1,7 +1,7 @@
 /* Hero section */
 header.hero {
   position: relative;
-  height: 70vh; /* adjust to your desired size */
+  height: 70vh; /* adjust as needed */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,4 +51,30 @@ header.hero {
 
 .hero-text .btn:hover {
   background: #e09e00;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-text h2 {
+    font-size: 1.8rem;
+  }
+  .hero-text p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header.hero {
+    height: 60vh;
+  }
+  .hero-text h2 {
+    font-size: 1.5rem;
+  }
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+  .hero-text .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
 }
