@@ -20,11 +20,6 @@ body {
   background: #111;
 }
 
-.navbar .logo img {
-  height: 50px;
-  width: auto;
-}
-
 .navbar ul {
   list-style: none;
   display: flex;
@@ -39,6 +34,11 @@ body {
 
 .navbar ul li a:hover {
   text-decoration: underline;
+}
+
+.navbar .logo img {
+  height: 50px;
+  width: auto;
 }
 
 /* Hero section */
@@ -172,6 +172,7 @@ footer {
   text-align: center;
   padding: 1.5rem;
 }
+
 
 
 
