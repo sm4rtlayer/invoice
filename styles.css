@@ -1,3 +1,4 @@
+/* General layout */
 html, body {
   height: 100%;
   margin: 0;
@@ -15,6 +16,7 @@ main {
   flex: 1; /* pushes footer down */
 }
 
+/* Footer */
 footer {
   background: #222;
   color: #fff;
@@ -31,10 +33,10 @@ footer {
   background: #111;
 }
 
-.navbar .brand{
+.navbar .brand {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
   padding: 1rem 2rem;
   background: transparent;
 }
@@ -49,46 +51,44 @@ footer {
   gap: 1.5rem;
 }
 
-.navbar ul li a {
+.navbar ul li a,
+.navbar ul li button {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
-}
-
-.navbar ul li button {
+  font-size: 1rem;
   background: none;
   border: none;
-  color: #fff;
-  font-weight: 500;
-  font-size: 1rem;
   cursor: pointer;
 }
 
-.navbar ul li a:hover {
+.navbar ul li a:hover,
+.navbar ul li button:hover {
   text-decoration: underline;
 }
 
+/* Brand logos / generic ul styling */
 ul {
   list-style: none;
-  display: flex;            /* horizontal row */
+  display: flex;
   justify-content: center;  /* center the logos */
   align-items: center;      /* vertically align */
-  gap: 12px;              /* space between */
+  gap: 12px;                /* space between */
   margin: 0;
   padding: 8px;
 }
 
-
 ul li {
-  display: inline-block; /* keeps them horizontal if not using flex */
+  display: inline-block;
 }
+
 ul li a img {
-  height: 32px;   /* consistent height */
-  width: auto;    /* keep aspect ratio */
+  height: 32px; /* consistent height */
+  width: auto;  /* maintain aspect ratio */
   display: block;
 }
 
-/* Sections */
+/* Section styling */
 .section {
   padding: 4rem 2rem;
   text-align: center;
@@ -98,6 +98,7 @@ ul li a img {
   background: #f7f7f7;
 }
 
+/* Cards */
 .cards {
   display: flex;
   gap: 2rem;
@@ -126,43 +127,11 @@ ul li a img {
     align-items: center;
     gap: 0.75rem;
   }
-
-  .hero-text h2 {
-    font-size: 1.8rem;
-  }
-
-  .hero-text p {
-    font-size: 1rem;
-  }
 }
 
 @media (max-width: 480px) {
-  .hero {
-    height: 60vh;
-  }
-
-  .hero-text h2 {
-    font-size: 1.5rem;
-  }
-
-  .hero-text p {
-    font-size: 0.9rem;
-  }
-
   .btn {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
