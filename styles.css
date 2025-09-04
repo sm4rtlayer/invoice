@@ -25,10 +25,10 @@ body {
 /* Navbar container */
 .navbar ul {
     display: flex;
-    gap: 25px;       /* space between buttons */
+    gap: 25px;         /* space between buttons */
     list-style: none;
     margin: 0;
-    padding: 3px 5px; /* vertical + horizontal padding */
+    padding: 10px 8px; /* vertical + horizontal padding */
     overflow: hidden;
 }
 
@@ -41,7 +41,7 @@ body {
 .navbar ul li a,
 .navbar ul li button {
     display: block;
-    padding: 10px 20px;   /* bigger padding for better spacing */
+    padding: 10px 15px;   /* bigger padding for better spacing */
     font-size: 1rem;
     border: none;
     background: none;
@@ -195,6 +195,7 @@ footer {
   text-align: center;
   padding: 1.5rem;
 }
+
 
 
 
