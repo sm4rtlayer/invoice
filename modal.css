@@ -26,7 +26,7 @@
     transition: transform 0.3s ease, opacity 0.3s ease;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* subtle shadow */
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    color: #333;
+    color: #000; /* set text color to black */
     line-height: 1.7;
     text-align: justify; /* paragraph justification */
 }
