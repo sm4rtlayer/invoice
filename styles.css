@@ -117,7 +117,7 @@ header.hero {
 }
 
 .brand-list li a img {
-  height: 64px;
+  height: 32px;
   width: auto;
   display: block;
   transition: transform 0.3s;
@@ -168,6 +168,14 @@ header.hero {
     gap: 1rem;
   }
 }
+
+footer {
+  background: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 1.5rem;
+}
+
 
 
 
