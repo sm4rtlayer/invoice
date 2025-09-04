@@ -19,7 +19,7 @@
         <ul>
             <li><button id="openAbout">About Us</button></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><button id="openContact">Contact</button></li>
         </ul>
     </nav>
 
@@ -62,12 +62,64 @@
         </div>
     </div>
 
+    <!-- Contact Modal -->
+        <div id="contactModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeContact">&times;</span>
+                <h2>Contact Us</h2>
+                <ul class="contact-list">
+                    <li>
+                        <span class="icon">📍</span>
+                        <span class="title">Address:</span>
+                        123 Solar Street, Gamay City, Philippines
+                    </li>
+                    <li>
+                        <span class="icon">📞</span>
+                        <span class="title">Phone:</span>
+                        +63 912 345 6789
+                    </li>
+                    <li>
+                        <span class="icon">✉️</span>
+                        <span class="title">Email:</span>
+                        info@gamaysolarista.com
+                    </li>
+                    <li>
+                        <span class="icon">🌐</span>
+                        <span class="title">Website:</span>
+                        www.gamaysolarista.com
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    
+
     <!-- Modal JS -->
     <script>
     const modal = document.getElementById('aboutModal');
     const openBtn = document.getElementById('openAbout');
     const closeBtn = modal.querySelector('.close');
+    const contactModal = document.getElementById('contactModal');
+    const openContactBtn = document.getElementById('openContact'); 
+    const closeContactBtn = document.getElementById('closeContact');
     
+    // Open contact modal
+    openContactBtn.addEventListener('click', () => {
+        contactModal.classList.add('show');
+    });
+    
+    // Close contact modal
+    closeContactBtn.addEventListener('click', () => {
+        contactModal.classList.remove('show');
+    });
+    
+    // Close modal when clicking outside content
+    window.addEventListener('click', (event) => {
+        if (event.target === contactModal) {
+            contactModal.classList.remove('show');
+        }
+    });
+
     // Open modal on button click
     openBtn.addEventListener('click', () => {
         modal.classList.add('show');
@@ -84,9 +136,11 @@
             modal.classList.remove('show');
         }
     });
+        
     </script>
 </body>
 
 </html>
+
 
 
