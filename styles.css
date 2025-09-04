@@ -55,8 +55,8 @@ body {
 /* Hover effect for buttons/links */
 .navbar ul li a:hover,
 .navbar ul li button:hover {
-    background-color: #000;  /* subtle highlight */
-    color: #ffffff;
+    background-color: #ffffff;  /* subtle highlight */
+    color: #000;
 }
 
 /* Logo styling */
@@ -195,6 +195,7 @@ footer {
   text-align: center;
   padding: 1.5rem;
 }
+
 
 
 
