@@ -33,7 +33,7 @@ body {
     background: none;
     border: none;
     font-size: 16px;
-    color: #ffffffff; /* Change to match your design */
+    color: white; /* Change to match your design */
     cursor: pointer;
     font-family: sans-serif; /* Optional: use your preferred font */
 }
@@ -175,6 +175,7 @@ footer {
   text-align: center;
   padding: 1.5rem;
 }
+
 
 
 
