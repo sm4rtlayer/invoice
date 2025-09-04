@@ -194,10 +194,11 @@ ul {
 
 
 ul li a img {
-  width: 32px;   /* adjust size */
+  width: 64px;   /* adjust size */
   height: auto;
   display: block;
 }
+
 
 
 
