@@ -48,6 +48,22 @@ body {
   text-decoration: underline;
 }
 
+ul {
+  list-style: none;
+  display: flex;            /* horizontal row */
+  justify-content: center;  /* center the logos */
+  align-items: center;      /* vertically align */
+  gap: 1.5rem;              /* space between */
+  margin: 0;
+  padding: 8px;
+}
+
+ul li a img {
+  height: 64px;   /* consistent height */
+  width: auto;    /* keep aspect ratio */
+  display: block;
+}
+
 /* Hero section */
 header.hero {
   position: relative;
@@ -181,23 +197,6 @@ footer {
   }
 }
 
-ul {
-  list-style: none;
-  display: flex;           /* horizontal layout */
-  flex-wrap: nowrap;       /* force a single row */
-  justify-content: center; /* center the row */
-  align-items: center;     /* align vertically in the middle */
-  gap: 1.5rem;             /* space between logos */
-  margin: 0;
-  padding: 8px;
-}
-
-
-ul li a img {
-  height: 64px;   /* adjust size */
-  width: auto;
-  display: block;
-}
 
 
 
