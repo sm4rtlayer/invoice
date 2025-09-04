@@ -28,7 +28,7 @@ body {
     gap: 25px;       /* space between buttons */
     list-style: none;
     margin: 0;
-    padding: 10px 8px; /* vertical + horizontal padding */
+    padding: 3px 5px; /* vertical + horizontal padding */
     overflow: hidden;
 }
 
@@ -195,6 +195,7 @@ footer {
   text-align: center;
   padding: 1.5rem;
 }
+
 
 
 
