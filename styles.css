@@ -25,13 +25,6 @@ body {
     height: 50px; /* Adjust as needed */
 }
 
-/* Remove list styling */
-.navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  color: #ffffffff;
-}
 
 /* Style list items and links/buttons */
 .navbar ul li a,
@@ -182,6 +175,7 @@ footer {
   text-align: center;
   padding: 1.5rem;
 }
+
 
 
 
