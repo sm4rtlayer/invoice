@@ -186,7 +186,7 @@ ul {
   display: flex;
   gap: 1.5rem;
   margin: 0;
-  padding: 8px;
+  padding: 1px;
   align-items: flex-end; /* push children to bottom */
 }
 
@@ -196,4 +196,5 @@ ul li a img {
   height: auto;
   display: block;
 }
+
 
