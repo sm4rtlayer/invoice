@@ -2,109 +2,112 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gamay Solarista</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="modal.css" />
-    <link rel="stylesheet" href="hero.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gamay Solarista</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="modal.css" />
+  <link rel="stylesheet" href="hero.css" />
 </head>
 
 <body>
-    <nav class="navbar">
-        <h1 class="logo">
-            <img src="images/gamay_logo_brand.png" alt="Gamay Solarista Logo" />
-        </h1>
-        <ul>
-            <li><button id="openAbout">About Us</button></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1 class="logo">
+      <img src="images/gamay_logo_brand.png" alt="Gamay Solarista Logo" />
+    </h1>
+    <ul>
+      <li><button id="openAbout">About Us</button></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <nav class="brand">
-        <ul>
-            <li><a href="#about"><img src="brands/deye1.png" alt="Deye" /></a></li>
-            <li><a href="#services"><img src="brands/solis1.png" alt="Solis" /></a></li>
-            <li><a href="#contact"><img src="brands/jingko1.png" alt="Jingko" /></a></li>
-            <li><a href="#contact"><img src="brands/jasolar1.png" alt="Jasolar" /></a></li>
-            <li><a href="#contact"><img src="brands/dyness1.png" alt="dyness" /></a></li>
-        </ul>
-    </nav>
+  <!-- Brand logos -->
+  <nav class="brand">
+    <ul>
+      <li><a href="#about"><img src="brands/deye1.png" alt="Deye" /></a></li>
+      <li><a href="#services"><img src="brands/solis1.png" alt="Solis" /></a></li>
+      <li><a href="#contact"><img src="brands/jingko1.png" alt="Jingko" /></a></li>
+      <li><a href="#contact"><img src="brands/jasolar1.png" alt="Jasolar" /></a></li>
+      <li><a href="#contact"><img src="brands/dyness1.png" alt="Dyness" /></a></li>
+    </ul>
+  </nav>
 
- <header class="hero">
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="webp/bg_main.webm" type="video/webm">
-    Your browser does not support the video tag.
-  </video>
+  <!-- Hero section -->
+  <header class="hero">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="webp/bg_main.webm" type="video/webm">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-text">
+      <h2>Powering Tomorrow, Today</h2>
+      <p>Affordable and sustainable solar solutions for every home.</p>
+      <a href="#contact" class="btn">Get a Free Quote</a>
+    </div>
+  </header>
 
-  <div class="hero-text">
-    <h2>Powering Tomorrow, Today</h2>
-    <p>Affordable and sustainable solar solutions for every home.</p>
-    <a href="#contact" class="btn">Get a Free Quote</a>
-  </div>
-</header>
-
-
+  <!-- Main content -->
+  <main>
     <section id="services" class="section alt">
-        <h2>Our Services</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Home Solar Systems</h3>
-                <p>Custom solar solutions for residential use.</p>
-            </div>
-            <div class="card">
-                <h3>Commercial Installations</h3>
-                <p>Energy independence for your business.</p>
-            </div>
-            <div class="card">
-                <h3>Maintenance & Support</h3>
-                <p>Keep your solar investment running at peak performance.</p>
-            </div>
+      <h2>Our Services</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Home Solar Systems</h3>
+          <p>Custom solar solutions for residential use.</p>
         </div>
+        <div class="card">
+          <h3>Commercial Installations</h3>
+          <p>Energy independence for your business.</p>
+        </div>
+        <div class="card">
+          <h3>Maintenance & Support</h3>
+          <p>Keep your solar investment running at peak performance.</p>
+        </div>
+      </div>
     </section>
 
     <section id="contact" class="section">
-        <h2>Contact Us</h2>
-        <p>Email: <a href="mailto:info@gamaysolarista.com">info@gamaysolarista.com</a></p>
-        <p>Phone: +63 900 000 0000</p>
+      <h2>Contact Us</h2>
+      <p>Email: <a href="mailto:info@gamaysolarista.com">info@gamaysolarista.com</a></p>
+      <p>Phone: +63 900 000 0000</p>
     </section>
+  </main>
 
-    <footer>
-        <p>© 2025 Gamay Solarista. All rights reserved.</p>
-    </footer>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Gamay Solarista. All rights reserved.</p>
+  </footer>
 
-    <!-- Modal HTML -->
-    <div id="aboutModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>About Us</h2>
-            <p>
-                At Gamay Solarista, we believe clean energy should be accessible to everyone.
-                We provide reliable, cost-effective solar installations tailored to your needs.
-            </p>
-        </div>
+  <!-- Modal HTML -->
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>About Us</h2>
+      <p>
+        At Gamay Solarista, we believe clean energy should be accessible to everyone.
+        We provide reliable, cost-effective solar installations tailored to your needs.
+      </p>
     </div>
+  </div>
 
-    <!-- Modal JS -->
-    <script>
-        const modal = document.getElementById("aboutModal");
-        const openBtn = document.getElementById("openAbout");
-        const closeBtn = modal.querySelector(".close");
+  <!-- Modal JS -->
+  <script>
+    const modal = document.getElementById("aboutModal");
+    const openBtn = document.getElementById("openAbout");
+    const closeBtn = modal.querySelector(".close");
 
-        openBtn.onclick = (e) => {
-            e.preventDefault(); // stop page jump
-            modal.style.display = "flex";
-        };
+    openBtn.onclick = (e) => {
+      e.preventDefault();
+      modal.style.display = "flex";
+    };
 
-        closeBtn.onclick = () => modal.style.display = "none";
+    closeBtn.onclick = () => modal.style.display = "none";
 
-        window.onclick = (e) => {
-            if (e.target === modal) modal.style.display = "none";
-        };
-    </script>
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+  </script>
 </body>
 
 </html>
-
-
