@@ -44,15 +44,19 @@ body {
   transform: translateY(-2px);
 }
 
-/* Hero Section */
+/* Hero section */
 header.hero {
   position: relative;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color: white;
   overflow: hidden;
-  padding-bottom: 2rem; /* space for brand logos */
-  background: #222; /* fallback background */
+  
 }
+
 
 .hero-video {
   position: absolute;
@@ -69,9 +73,8 @@ header.hero {
 
 .hero-text {
   position: relative;
-  padding: 2rem 1rem;
+  padding: 1rem;
   max-width: 800px;
-  margin: 0 auto;
 }
 
 .hero-text h2 {
@@ -92,8 +95,9 @@ header.hero {
   border-radius: 0.5rem;
   text-decoration: none;
   font-weight: bold;
-  transition: background 0.3s, transform 0.2s;
+  transition: background 0.3s;
 }
+
 
 .hero-text .btn:hover,
 .hero-text .btn:focus {
@@ -164,6 +168,7 @@ header.hero {
     gap: 1rem;
   }
 }
+
 
 
 
