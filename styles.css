@@ -59,7 +59,7 @@ ul {
 }
 
 ul li a img {
-  height: 64px;   /* consistent height */
+  height: 32px;   /* consistent height */
   width: auto;    /* keep aspect ratio */
   display: block;
 }
@@ -196,6 +196,7 @@ footer {
     font-size: 0.9rem;
   }
 }
+
 
 
 
