@@ -1,15 +1,25 @@
-/* General resets */
-* {
+html, body {
+  height: 100%;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   font-family: system-ui, sans-serif;
   line-height: 1.6;
   color: #333;
-  margin-bottom: 40px; 
+}
+
+main {
+  flex: 1; /* pushes footer down */
+}
+
+footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
 }
 
 /* Navbar */
@@ -153,18 +163,6 @@ header.hero {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-/* Footer */
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #222;   /* example */
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
-}
-
 /* Responsive rules */
 @media (max-width: 768px) {
   .navbar {
@@ -205,6 +203,7 @@ footer {
     font-size: 0.9rem;
   }
 }
+
 
 
 
