@@ -41,25 +41,6 @@ body {
   text-decoration: underline;
 }
 
-.navbar ul.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.navbar ul.nav-links li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s, transform 0.2s;
-}
-
-.navbar ul.nav-links li a:hover,
-.navbar ul.nav-links li a:focus {
-  color: #ffb400;
-  transform: translateY(-2px);
-}
-
 /* Hero section */
 header.hero {
   position: relative;
@@ -191,6 +172,7 @@ footer {
   text-align: center;
   padding: 1.5rem;
 }
+
 
 
 
