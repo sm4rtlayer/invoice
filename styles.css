@@ -53,11 +53,15 @@ ul {
   display: flex;            /* horizontal row */
   justify-content: center;  /* center the logos */
   align-items: center;      /* vertically align */
-  gap: 1.5rem;              /* space between */
+  gap: 12px;              /* space between */
   margin: 0;
   padding: 8px;
 }
 
+
+ul li {
+  display: inline-block; /* keeps them horizontal if not using flex */
+}
 ul li a img {
   height: 32px;   /* consistent height */
   width: auto;    /* keep aspect ratio */
@@ -196,6 +200,7 @@ footer {
     font-size: 0.9rem;
   }
 }
+
 
 
 
