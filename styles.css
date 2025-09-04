@@ -9,6 +9,7 @@ body {
   font-family: system-ui, sans-serif;
   line-height: 1.6;
   color: #333;
+  margin-bottom: 40px; 
 }
 
 /* Navbar */
@@ -154,10 +155,14 @@ header.hero {
 
 /* Footer */
 footer {
-  background: #111;
-  color: #aaa;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #222;   /* example */
+  color: #fff;
   text-align: center;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 /* Responsive rules */
@@ -200,6 +205,7 @@ footer {
     font-size: 0.9rem;
   }
 }
+
 
 
 
