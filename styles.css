@@ -20,14 +20,23 @@ body {
   color: #ffffff;
   background: #000000; /* Assuming dark background for white text contrast */
 }
+
 .navbar ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;                /* Enables horizontal layout */
-  justify-content: center;      /* Adjusts horizontal alignment: center, space-between, flex-start, etc. */
-  gap: 1rem;                    /* Optional: adds spacing between items */
+  overflow: hidden;
 }
+
+.navbar ul li {
+  float: left;
+}
+
+.navbar ul li a {
+  display: block;
+  padding: 8px 16px;
+}
+
 
 /* Logo styling */
 .logo img {
@@ -183,6 +192,7 @@ footer {
   text-align: center;
   padding: 1.5rem;
 }
+
 
 
 
