@@ -18,12 +18,36 @@
 
 .modal-content {
     background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 500px;
+    padding: 30px 25px;
+    border-radius: 12px;
+    max-width: 550px;
     width: 90%;
     transform: translateY(-20px);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* subtle shadow */
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+    line-height: 1.7;
+    text-align: justify; /* paragraph justification */
+}
+
+.modal-content h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+    text-align: center; /* title centered */
+}
+
+.modal-content p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    text-align: justify; /* paragraph justified */
+    color: #555;
+}
+
+.modal-content p:last-child {
+    margin-bottom: 0;
 }
 
 .modal.show .modal-content {
