@@ -2,59 +2,84 @@
 <html lang="en">
 
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" />
         <meta name="viewport"
-              content="width=device-width, initial-scale=1.0">
-        <title>InvoicePlane Landing</title>
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-              rel="stylesheet">
-        <style>
-            html,
-            body {
-                height: 100%;
-                margin: 0;
-            }
-
-            body {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: linear-gradient(to right, #4e54c8, #8f94fb);
-                color: white;
-                text-align: center;
-                font-family: 'Arial', sans-serif;
-            }
-
-            .cover-container {
-                max-width: 600px;
-            }
-
-            .btn-custom {
-                background-color: #ff7f50;
-                border: none;
-                color: white;
-            }
-
-            .btn-custom:hover {
-                background-color: #ff6333;
-            }
-        </style>
+              content="width=device-width, initial-scale=1.0" />
+        <title>Gamay Solarista</title>
+        <link rel="stylesheet"
+              href="styles.css" />
     </head>
 
     <body>
-        <div class="cover-container">
-            <h1 class="display-4 fw-bold">Welcome to InvoicePlane</h1>
-            <p class="lead mb-4">Manage your invoices easily and efficiently. Start tracking your invoices today.</p>
-            <a href="invoiceplane/"
-               class="btn btn-custom btn-lg">Go to Dashboard</a>
-            <footer class="mt-5">
-                <p>&copy; 2025 InvoicePlane. All rights reserved.</p>
-            </footer>
-        </div>
+        <nav class="navbar">
+            <h1 class="logo">
+                <img src="images/gamay_logo_brand.png"
+                     alt="Gamay Solarista Logo" />
+            </h1>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
 
-        <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <header class="hero">
+            <video autoplay
+                   muted
+                   loop
+                   playsinline
+                   class="hero-video">
+                <source src="webp/bg_main.webm"
+                        type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="hero-text">
+                <h2>Powering Tomorrow, Today</h2>
+                <p>Affordable and sustainable solar solutions for every home.</p>
+                <a href="#contact"
+                   class="btn">Get a Free Quote</a>
+            </div>
+        </header>
+
+        <section id="about"
+                 class="section">
+            <h2>About Us</h2>
+            <p>
+                At Gamay Solarista, we believe clean energy should be accessible to everyone.
+                We provide reliable, cost-effective solar installations tailored to your needs.
+            </p>
+        </section>
+
+        <section id="services"
+                 class="section alt">
+            <h2>Our Services</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Home Solar Systems</h3>
+                    <p>Custom solar solutions for residential use.</p>
+                </div>
+                <div class="card">
+                    <h3>Commercial Installations</h3>
+                    <p>Energy independence for your business.</p>
+                </div>
+                <div class="card">
+                    <h3>Maintenance & Support</h3>
+                    <p>Keep your solar investment running at peak performance.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact"
+                 class="section">
+            <h2>Contact Us</h2>
+            <p>Email: <a href="mailto:info@gamaysolarista.com">info@gamaysolarista.com</a></p>
+            <p>Phone: +63 900 000 0000</p>
+        </section>
+
+        <footer>
+            <p>© 2025 Gamay Solarista. All rights reserved.</p>
+        </footer>
     </body>
 
 </html>
