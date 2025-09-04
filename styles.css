@@ -192,7 +192,8 @@ ul {
 
 
 ul li a img {
-  width: 64px;   /* adjust size */
+  width: 32px;   /* adjust size */
   height: auto;
   display: block;
 }
+
