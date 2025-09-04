@@ -17,7 +17,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    background-color: #111; /* Optional: background color */
+    background-color: #000000; /* Optional: background color */
 }
 
 /* Logo styling */
@@ -177,10 +177,11 @@ header.hero {
 
 footer {
   background: #bcb8b8;
-  color: #aaa;
+  color: #000000;
   text-align: center;
   padding: 1.5rem;
 }
+
 
 
 
