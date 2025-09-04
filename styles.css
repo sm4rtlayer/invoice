@@ -64,24 +64,6 @@ body {
   height: 50px; /* Adjust as needed */
 }
 
-/* Style list items and links/buttons */
-.navbar ul li a,
-.navbar ul li button {
-  text-decoration: none;
-  background: none;
-  border: none;
-  font-size: 16px;
-  color: #ffffff; /* White text */
-  cursor: pointer;
-  font-family: sans-serif;
-}
-
-/* Hover effect */
-.navbar ul li a:hover,
-.navbar ul li button:hover {
-  color: #dddddd; /* Slightly off-white on hover for visual feedback */
-}
-
 /* Hero section */
 header.hero {
   position: relative;
@@ -213,6 +195,7 @@ footer {
   text-align: center;
   padding: 1.5rem;
 }
+
 
 
 
