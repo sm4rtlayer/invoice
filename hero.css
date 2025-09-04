@@ -1,16 +1,15 @@
 /* Hero section */
 header.hero {
   position: relative;
-  height: 70vh;
+  height: 70vh; /* adjust to your desired size */
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  color: white;
+  color: #fff;
   overflow: hidden;
-  
+  background: #000; /* fallback if video fails */
 }
-
 
 .hero-video {
   position: absolute;
@@ -20,15 +19,13 @@ header.hero {
   height: 100%;
   object-fit: cover;
   z-index: -1;
-    /* space above video */
-  padding-top: 10px;      /* adjust height */
-  background-color: #e0dfdf; /* grey bar */
 }
 
 .hero-text {
   position: relative;
-  padding: 1rem;
+  z-index: 1;
   max-width: 800px;
+  padding: 1rem;
 }
 
 .hero-text h2 {
@@ -54,14 +51,4 @@ header.hero {
 
 .hero-text .btn:hover {
   background: #e09e00;
-}
-
-/* Sections */
-.section {
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.section.alt {
-  background: #f7f7f7;
 }
