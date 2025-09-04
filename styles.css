@@ -28,7 +28,8 @@ body {
 }
 
 .navbar .logo img {
-  max-height: 50px;
+  max-height: 32px;
+  width: auto;
 }
 
 .navbar ul {
@@ -211,5 +212,6 @@ ul.icon-list li a img {
     font-size: 0.9rem;
   }
 }
+
 
 
