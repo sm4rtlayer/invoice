@@ -11,34 +11,43 @@ body {
   color: #333;
 }
 
-/* Navbar */
+/* Style the navbar */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff; /* Optional: background color */
 }
 
+/* Logo styling */
+.logo img {
+    height: 50px; /* Adjust as needed */
+}
+
+/* Remove list styling */
 .navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
+    list-style: none;
+    display: flex;
+    gap: 20px;
 }
 
-.navbar ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
+/* Style list items and links/buttons */
+.navbar ul li a,
+.navbar ul li button {
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #000; /* Change to match your design */
+    cursor: pointer;
+    font-family: sans-serif; /* Optional: use your preferred font */
 }
 
-.navbar ul li a:hover {
-  text-decoration: underline;
-}
-
-.navbar .logo img {
-  height: 50px;
-  width: auto;
+/* Optional: Add hover effect */
+.navbar ul li a:hover,
+.navbar ul li button:hover {
+    color: #007BFF; /* Optional hover color */
 }
 
 /* Hero section */
@@ -172,6 +181,7 @@ footer {
   text-align: center;
   padding: 1.5rem;
 }
+
 
 
 
