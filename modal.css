@@ -69,20 +69,19 @@
 
 .contact-list li {
     display: flex;
-    align-items: center;
-    margin-bottom: 12px;
+    flex-direction: column; /* stack icon + title + content vertically */
+    margin-bottom: 15px;
     font-size: 1rem;
-    color: #000; /* text black */
-    line-height: 1.6;
+    color: #000;
 }
 
-.contact-list .icon {
+.contact-list li .icon {
     font-size: 1.3rem;
-    margin-right: 10px;
+    margin-bottom: 5px; /* space between icon and title */
 }
 
-.contact-list .title {
+.contact-list li .title {
     font-weight: 700;
-    margin-right: 6px;
-    min-width: 80px; /* aligns the titles neatly */
+    margin-bottom: 4px; /* space between title and content */
+    display: block;       /* ensures it’s on a separate line */
 }
