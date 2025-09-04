@@ -8,7 +8,7 @@
 body {
   font-family: system-ui, sans-serif;
   line-height: 1.6;
-   color: #ffffffff;
+  color: #ffffff; /* Set body text to white if needed */
 }
 
 /* Style the navbar */
@@ -17,31 +17,30 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: #111;
+  background: #000000; /* Assuming dark background for white text contrast */
 }
 
 /* Logo styling */
 .logo img {
-    height: 50px; /* Adjust as needed */
+  height: 50px; /* Adjust as needed */
 }
-
 
 /* Style list items and links/buttons */
 .navbar ul li a,
 .navbar ul li button {
-    text-decoration: none;
-    background: none;
-    border: none;
-    font-size: 16px;
-    color: white; /* Change to match your design */
-    cursor: pointer;
-    font-family: sans-serif; /* Optional: use your preferred font */
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #ffffff; /* White text */
+  cursor: pointer;
+  font-family: sans-serif;
 }
 
-/* Optional: Add hover effect */
+/* Hover effect */
 .navbar ul li a:hover,
 .navbar ul li button:hover {
-    color: #ffffffff; /* Optional hover color */
+  color: #dddddd; /* Slightly off-white on hover for visual feedback */
 }
 
 /* Hero section */
@@ -175,6 +174,7 @@ footer {
   text-align: center;
   padding: 1.5rem;
 }
+
 
 
 
