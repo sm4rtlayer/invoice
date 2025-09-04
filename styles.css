@@ -183,11 +183,13 @@ footer {
 
 ul {
   list-style: none;
-  display: flex;
-  gap: 1.5rem;
+  display: flex;           /* horizontal layout */
+  flex-wrap: nowrap;       /* force a single row */
+  justify-content: center; /* center the row */
+  align-items: center;     /* align vertically in the middle */
+  gap: 1.5rem;             /* space between logos */
   margin: 0;
-  padding: 1px;
-  align-items: flex-end; /* push children to bottom */
+  padding: 8px;
 }
 
 
@@ -196,5 +198,6 @@ ul li a img {
   height: auto;
   display: block;
 }
+
 
 
