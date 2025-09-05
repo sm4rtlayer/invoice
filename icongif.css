@@ -8,8 +8,9 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(6, 1fr); /* exactly 6 across */
+  justify-items: center;                 /* center icon+label */
+  gap: 16px;                             /* space between */
   text-align: center;
 }
 
@@ -20,14 +21,13 @@
 }
 
 .icongif-list img {
-  max-width: 24px;
+  width: 32px;      /* bump size a bit for visibility */
   height: auto;
   display: block;
 }
 
 .icongif-list span {
   margin-top: 6px;
-  font-size: 14px;
+  font-size: 13px; /* slightly smaller so text wraps cleaner */
   color: #333;
 }
-
