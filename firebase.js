@@ -3,7 +3,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
 import { getAuth, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, signOut, onAuthStateChanged } 
     from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
-  import { initializeApp } from "firebase/app";
 
 // ✅ Your Firebase Config (from Firebase Console)
 const firebaseConfig = {
@@ -150,3 +149,4 @@ window.onload = () => {
   showUser();
   autofillForm();
 };
+
