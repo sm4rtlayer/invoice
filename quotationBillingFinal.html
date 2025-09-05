@@ -98,7 +98,29 @@
 
         <!-- Main Hero Section -->
         <main class="heroMain">
+            <form class="quotation-form"
+                  id="quotationForm">
+                <h2>Quotation Request</h2>
+                <label for="name">Name:</label>
+                <input type="text"
+                       id="name"
+                       name="name"
+                       readonly>
 
+                <label for="email">Email:</label>
+                <input type="email"
+                       id="email"
+                       name="email"
+                       readonly>
+
+                <label for="details">Project Details:</label>
+                <textarea id="details"
+                          name="details"
+                          rows="4"
+                          placeholder="Describe your project"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
         </main>
 
         <!-- Sticky Footer -->
@@ -204,6 +226,38 @@
             </div>
         </div>
 
+
+        <script type="module">
+            const userPhoto = document.getElementById("userPhoto");
+            const userName = document.getElementById("userName");
+
+            const name = sessionStorage.getItem("userName");
+            const photo = sessionStorage.getItem("userPhoto");
+            const email = sessionStorage.getItem("userEmail"); // optional, if saved during login
+
+            if (!name || !photo) {
+                // Not logged in → redirect to index
+                window.location.href = "index.html";
+            } else {
+                // Populate user box
+                userPhoto.src = photo;
+                userName.textContent = name;
+
+                // Auto-fill form
+                document.getElementById("name").value = name;
+                document.getElementById("email").value = email || ""; // optional
+            }
+
+            // Handle form submission
+            const form = document.getElementById("quotationForm");
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                alert("Quotation submitted!");
+                // Here you can also push to Firebase Firestore or send via email
+            });
+        </script>
+
+
         <script>
             function setupModal(openBtnId, modalId, closeBtnId) {
                 const modal = document.getElementById(modalId);
@@ -230,7 +284,13 @@
                 setupModal("openServices", "servicesModal", "closeServices");
                 setupModal("openContact", "contactModal", "closeContact");
             });
+
+
         </script>
+
+
+
+
 
     </body>
 
