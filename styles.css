@@ -98,15 +98,16 @@ body {
 
 
 /* Hero Links Section */
+/* Hero Links Section */
 .heroMain {
   position: relative;
   height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  color: white;
   overflow: hidden;
+  color: white;
+  text-align: center;
 }
 
 .hero-video {
@@ -122,12 +123,15 @@ body {
   position: relative;
   z-index: 1;
   color: #fff;
-  text-align: center;
-  top: 50%;
-  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 0 20px;
   opacity: 0; /* start invisible */
-  animation: fadeUp 1s ease-out forwards; /* apply animation */
+  transform: translateY(20px); /* start slightly below */
+  animation: fadeUp 1s ease-out forwards;
+  animation-delay: 0.3s; /* delay before animation starts */
 }
 
 @keyframes fadeUp {
@@ -137,20 +141,27 @@ body {
   }
   100% {
     opacity: 1;
-    transform: translateY(-50%);
+    transform: translateY(0);
   }
 }
 
+/* Heading */
 .hero-text h2 {
   font-size: 2.5rem;
   margin-bottom: 12px;
+  animation: textFade 1s ease-out forwards;
+  animation-delay: 0.5s;
 }
 
+/* Paragraph */
 .hero-text p {
   font-size: 1.25rem;
   margin-bottom: 20px;
+  animation: textFade 1s ease-out forwards;
+  animation-delay: 0.7s;
 }
 
+/* Button */
 .hero-text .btn {
   display: inline-block;
   padding: 12px 24px;
@@ -160,27 +171,27 @@ body {
   border-radius: 8px;
   text-decoration: none;
   transition: background 0.3s ease, transform 0.3s ease;
+  animation: textFade 1s ease-out forwards;
+  animation-delay: 0.9s;
 }
 
 .hero-text .btn:hover {
   background: #e6a200;
-  transform: translateY(-3px); /* subtle lift on hover */
+  transform: translateY(-3px);
 }
 
-
-.hero-text .btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background: #ffb400;
-  color: #fff;
-  font-weight: bold;
-  border-radius: 8px;
-  text-decoration: none;
+/* Text fade animation */
+@keyframes textFade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.hero-text .btn:hover {
-  background: #e6a200;
-}
 
 
 /* Footer */
@@ -203,6 +214,7 @@ body {
 main {
   padding-bottom: 60px; /* keep content above footer */
 }
+
 
 
 
