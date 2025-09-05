@@ -26,16 +26,23 @@
   border: 1px solid #ccc;
 }
 
-.quotation-form button {
-  margin-top: 15px;
+.quotation-form button[type="submit"] {
+  display: block;          /* ensure it displays properly */
+  width: 100%;             /* full width */
+  margin-top: 15px;        /* spacing from above */
+  padding: 10px;           /* comfortable padding */
   background-color: #007BFF;
   color: white;
   border: none;
+  border-radius: 5px;      /* rounded corners */
   cursor: pointer;
+  font-size: 16px;
   transition: background-color 0.3s;
+  z-index: 1;              /* ensure it’s above other elements */
 }
 
-.quotation-form button:hover {
+/* Hover effect */
+.quotation-form button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
@@ -128,3 +135,4 @@
 .selectPackageBtn:hover {
   background-color: #218838;
 }
+
