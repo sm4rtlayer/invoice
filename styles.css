@@ -51,26 +51,26 @@ body {
 
 /* Icon Links Section */
 .icon-links {
-  padding: 18px;
+  padding: 12px;
   background: #fafafa;
   text-align: center;
+  overflow-x: auto;           /* allow horizontal scroll on small screens */
 }
 
 .icongif-list {
   list-style: none;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
-
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-  gap: 16px;
-  justify-items: center;
-
-  max-width: 480px;  /* keeps the block from stretching too wide */
+  
+  display: flex;
+  justify-content: center;    /* center on desktop */
+  gap: 20px;
+  
+  max-width: 100%;            /* let it scale to viewport */
 }
 
 .icongif-list li {
-  /* plain container */
+  flex: 0 0 auto;             /* prevent shrinking */
 }
 
 .icongif-list a {
@@ -78,7 +78,7 @@ body {
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: inherit; /* keep text consistent */
+  color: inherit;
 }
 
 .icongif-list img {
@@ -96,8 +96,8 @@ body {
   margin-top: 4px;
   line-height: 1.2;
   text-align: center;
-  white-space: nowrap; /* stops labels from wrapping weirdly */
 }
+
 
 /* Hero Links Section */
 .heroMain {
@@ -161,6 +161,7 @@ body {
   padding: 1.5rem;
   min-height: 60px;   /* safe baseline */
 }
+
 
 
 
