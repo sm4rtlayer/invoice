@@ -213,31 +213,38 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  // Show user info or login button
-  function showUser() {
-    const userBox = document.getElementById("userBox");
-    const user = JSON.parse(localStorage.getItem("user"));
+ function showUser() {
+  const userBox = document.getElementById("userBox");
+  const user = JSON.parse(localStorage.getItem("user"));
 
-    if (!userBox) return;
+  if (!userBox) return;
 
-    if (user) {
-      userBox.innerHTML = `
-        <img src="${user.photo}" alt="Profile">
-        <span>Welcome, <b>${user.name}</b></span>
-        <button id="logoutBtn">Logout</button>
-      `;
+  if (user) {
+    userBox.innerHTML = `
+      <img src="${user.photo}" alt="Profile">
+      <span>${user.name}</span>
+      <button id="logoutBtn">Logout</button>
+    `;
 
-      document.getElementById("logoutBtn").addEventListener("click", () => {
-        signOut(auth).then(() => {
-          localStorage.removeItem("user");
-          showUser();
-        });
+    const img = userBox.querySelector("img");
+
+    // Toggle logout button
+    img.addEventListener("click", () => {
+      userBox.classList.toggle("active");
+    });
+
+    // Logout functionality
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      signOut(auth).then(() => {
+        localStorage.removeItem("user");
+        showUser();
       });
-    } else {
-      userBox.innerHTML = `<button id="openLogin">Login</button>`;
-      setupModal("openLogin", "loginModal", "closeLogin");
-    }
+    });
+  } else {
+    userBox.innerHTML = `<button id="openLogin">Login</button>`;
+    setupModal("openLogin", "loginModal", "closeLogin");
   }
+}
 
   // Save user & autofill form
   function saveUser(user) {
@@ -304,6 +311,7 @@
 
   </body>
 </html>
+
 
 
 
