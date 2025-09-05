@@ -1,5 +1,3 @@
-/* userbox.css */
-
 /* Header & logo */
 .site-header {
   display: flex;
@@ -14,46 +12,52 @@
   height: 50px;
 }
 
-/* User box (login/profile display) */
+/* User box: profile image + name + logout toggle */
 .user-box {
   display: flex;
+  flex-direction: column; /* stack image and name */
   align-items: center;
-  gap: 10px;
-  max-width: 200px; /* adjust as needed */
-  justify-content: flex-end; /* push content to the right */
-  overflow: hidden; /* prevent overflow */
-}
-
-.user-box span {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; /* show ... if name is too long */
-  max-width: 120px; /* space for image + button */
-  display: inline-block;
-  vertical-align: middle;
+  position: relative; /* for logout button positioning */
+  cursor: pointer;
+  max-width: 120px;
 }
 
 .user-box img {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 
+.user-box span {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  max-width: 100%;
+}
+
+/* Logout button (hidden by default) */
 .user-box button {
-  padding: 0.3em 0.8em;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  background: #2c82c9;
+  display: none;
+  position: absolute;
+  top: 100%; /* below the image */
+  background: #e74c3c;
   color: #fff;
-  font-size: 0.9rem;
+  border: none;
+  padding: 0.3em 0.8em;
+  border-radius: 6px;
+  margin-top: 4px;
+  white-space: nowrap;
 }
 
-.user-box button:hover {
-  background: #236092;
+/* Show logout button when user-box is active */
+.user-box.active button {
+  display: block;
 }
 
-/* Modal */
+/* Modal styling */
 .modal {
   display: none;
   position: fixed;
@@ -85,4 +89,3 @@
   cursor: pointer;
   font-size: 1.2em;
 }
-
