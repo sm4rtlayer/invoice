@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0" />
+        <title>Gamay Solarista</title>
+        <link rel="stylesheet"
+              href="styles.css" />
+        <link rel="stylesheet"
+              href="userbox.css" />
+        <link rel="stylesheet"
+              href="modal.css" />
+        <style>
+            /* Form container styling */
+            .form-container {
+                padding: 1em;
+                max-width: 500px;
+                margin: 2em auto;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+            }
+
+            .form-container input,
+            .form-container button {
+                width: 100%;
+                margin: 0.5em 0;
+                padding: 0.5em;
+            }
+
+            #result {
+                margin-top: 1em;
+                padding: 1em;
+                border: 1px solid #ccc;
+                display: none;
+                border-radius: 6px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <header class="site-header">
+            <a href="index.html"
+               class="logo">
+                <img src="images/gamay_logo_brand.png"
+                     alt="Gamay Solarista Logo">
+            </a>
+        </header>
+
+        <!-- Icon Links Section -->
+        <section class="icon-links"
+                 aria-label="Brand partners">
+            <ul class="icongif-list">
+                <li>
+                    <a href="#"
+                       id="openAbout">
+                        <img src="gif/solarista_about.gif"
+                             alt="About" />
+                        <span>About</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       id="openContact">
+                        <img src="gif/solarista_contact.gif"
+                             alt="Contact" />
+                        <span>Contact</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       id="openServices">
+                        <img src="gif/solarista_services.gif"
+                             alt="Services" />
+                        <span>Services</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       id="openAchievements">
+                        <img src="gif/solarista_achievements.gif"
+                             alt="Achievements" />
+                        <span>Milestone</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       id="openPortfolio">
+                        <img src="gif/solarista_portfolio.gif"
+                             alt="Portfolio" />
+                        <span>Portfolio</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Main Hero Section -->
+        <main class="heroMain">
+
+        </main>
+
+        <!-- Sticky Footer -->
+        <footer class="footer">
+            <p>© 2025 Gamay Solarista. All rights reserved.</p>
+        </footer>
+
+        <!-- Modals + Scripts remain unchanged -->
+        <!-- About Modal -->
+        <div id="aboutModal"
+             class="modal">
+            <div class="modal-content">
+                <span class="close"
+                      id="closeAbout">&times;</span>
+                <h2 class="modal-title">About Us</h2>
+                <p>
+                    At Gamay Solarista, we are committed to making clean energy within reach of everyone. We specialize
+                    in
+                    delivering dependable, cost-effective solar installations tailored to each client. Our goal is to
+                    provide
+                    affordable and sustainable energy solutions that empower both households and businesses.
+                </p>
+            </div>
+        </div>
+
+        <!-- Services Modal -->
+        <div id="servicesModal"
+             class="modal">
+            <div class="modal-content">
+                <span class="close"
+                      id="closeServices">&times;</span>
+                <h2 class="modal-title">Our Services</h2>
+                <div class="service-cards">
+                    <div class="card">
+                        <div class="card-icon">🔆</div>
+                        <div class="card-info">
+                            <span class="title">Solar Panel Installation</span>
+                            <p>Custom-designed solar panel systems for your energy needs.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🔋</div>
+                        <div class="card-info">
+                            <span class="title">Battery Storage</span>
+                            <p>High-capacity battery solutions for energy independence.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">⚡</div>
+                        <div class="card-info">
+                            <span class="title">Inverter Setup</span>
+                            <p>Efficient inverters to maximize solar energy use.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🛠️</div>
+                        <div class="card-info">
+                            <span class="title">Maintenance & Support</span>
+                            <p>Reliable service to keep your system running smoothly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Modal -->
+        <div id="contactModal"
+             class="modal">
+            <div class="modal-content">
+                <span class="close"
+                      id="closeContact">&times;</span>
+                <h2 class="modal-title">Contact Us</h2>
+                <div class="contact-cards">
+                    <div class="card">
+                        <div class="card-icon">📍</div>
+                        <div class="card-info">
+                            <span class="title">Address</span>
+                            <p>Brgy. Burabod, Gamay Northern Samar, Philippines</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📞</div>
+                        <div class="card-info">
+                            <span class="title">Phone</span>
+                            <p>0927-513-2703</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">✉️</div>
+                        <div class="card-info">
+                            <span class="title">Email</span>
+                            <p>gamaysolarista1987@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🌐</div>
+                        <div class="card-info">
+                            <span class="title">Website</span>
+                            <p>www.gamaysolarista.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function setupModal(openBtnId, modalId, closeBtnId) {
+                const modal = document.getElementById(modalId);
+                const openBtn = document.getElementById(openBtnId);
+                const closeBtn = document.getElementById(closeBtnId);
+
+                if (!modal || !openBtn || !closeBtn) return;
+
+                // Open modal
+                openBtn.addEventListener("click", () => modal.classList.add("show"));
+
+                // Close modal
+                closeBtn.addEventListener("click", () => modal.classList.remove("show"));
+
+                // Close when clicking outside the modal content
+                window.addEventListener("click", (event) => {
+                    if (event.target === modal) modal.classList.remove("show");
+                });
+            }
+
+            // Initialize all static modals
+            document.addEventListener("DOMContentLoaded", () => {
+                setupModal("openAbout", "aboutModal", "closeAbout");
+                setupModal("openServices", "servicesModal", "closeServices");
+                setupModal("openContact", "contactModal", "closeContact");
+            });
+        </script>
+
+    </body>
+
+</html>
