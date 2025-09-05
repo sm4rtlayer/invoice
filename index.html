@@ -198,14 +198,36 @@
       </div>
     </div>
 
- <!-- Login Modal -->
-  <div id="loginModal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="closeLogin">&times;</span>
-      <h2 class="modal-title">Login</h2>
-      <button id="googleLoginBtn" class="google-btn">Login with Google</button>
-    </div>
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeLogin">&times;</span>
+    <h2 class="modal-title">Login</h2>
+    <button id="googleLoginBtn" class="google-btn">Login with Google</button>
   </div>
+</div>
+
+<!-- Quotation Modal -->
+<div id="quoteModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeQuote">&times;</span>
+    <h2>Solar Quotation</h2>
+    <label>Customer Name</label>
+    <input type="text" id="customerName" required>
+    <label>Email</label>
+    <input type="email" id="customerEmail" required>
+    <label>System Capacity (kW)</label>
+    <input type="number" id="capacity" step="0.1" required>
+    <label>Sun Hours per Day</label>
+    <input type="number" id="sunHours" step="0.1" required>
+    <label>Electricity Rate (₱/kWh)</label>
+    <input type="number" id="rate" step="0.1" required>
+    <label>Monthly Bill (₱)</label>
+    <input type="number" id="monthlyBill" step="0.1" required>
+    <button type="button" onclick="calculateQuotation()">Generate Quotation</button>
+    <div id="result"></div>
+  </div>
+</div>
 
     <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
@@ -220,44 +242,34 @@ const firebaseConfig = {
   messagingSenderId: "84647601122",
   appId: "1:84647601122:web:d5fb855a45516c8b0ccfbb"
 };
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// ===== User handling =====
-function getUser() {
-  return JSON.parse(localStorage.getItem("user"));
-}
+// ===== Helpers =====
+function getUser() { return JSON.parse(localStorage.getItem("user")); }
 
 function saveUser(user) {
-  const userData = {
-    name: user.displayName,
-    email: user.email,
-    photo: user.photoURL
-  };
+  const userData = { name: user.displayName, email: user.email, photo: user.photoURL };
   localStorage.setItem("user", JSON.stringify(userData));
   showUser();
   autofillForm();
 }
 
+// ===== Show User or Login Button =====
 function showUser() {
   const userBox = document.getElementById("userBox");
-  if (!userBox) return;
-
   const user = getUser();
+
   if (user) {
     userBox.innerHTML = `
-      <img src="${user.photo}" alt="Profile" class="profile-img">
-      <span class="profile-name">${user.name}</span>
-      <button id="logoutBtn" class="hidden">Logout</button>
+      <img src="${user.photo}" alt="Profile">
+      <span>${user.name}</span>
+      <button id="logoutBtn">Logout</button>
     `;
-
-    const img = userBox.querySelector(".profile-img");
+    const img = userBox.querySelector("img");
     const logoutBtn = document.getElementById("logoutBtn");
-    img.addEventListener("click", () => {
-      logoutBtn.classList.toggle("hidden");
-    });
 
+    img.addEventListener("click", () => userBox.classList.toggle("active"));
     logoutBtn.addEventListener("click", () => {
       signOut(auth).then(() => {
         localStorage.removeItem("user");
@@ -266,54 +278,49 @@ function showUser() {
     });
 
   } else {
-    userBox.innerHTML = `<button id="openLogin">Login</button>`;
+    userBox.innerText = "Quote & Billing Forecast";
+    userBox.classList.add("btn");
+    userBox.id = "openLogin";
     setupModal("openLogin", "loginModal", "closeLogin");
   }
 }
 
-// ===== Autofill form =====
+// ===== Autofill Form =====
 function autofillForm() {
   const user = getUser();
   if (!user) return;
-
   const nameInput = document.getElementById("customerName");
   const emailInput = document.getElementById("customerEmail");
-
   if (nameInput) nameInput.value = user.name;
   if (emailInput) emailInput.value = user.email;
 }
 
-// ===== Modal handling =====
-function setupModal(openBtnId, modalId, closeBtnId) {
+// ===== Modal Handling =====
+function setupModal(openId, modalId, closeId) {
   const modal = document.getElementById(modalId);
-  const openBtn = document.getElementById(openBtnId);
-  const closeBtn = document.getElementById(closeBtnId);
+  const openBtn = document.getElementById(openId);
+  const closeBtn = document.getElementById(closeId);
   if (!modal || !openBtn || !closeBtn) return;
 
   openBtn.addEventListener("click", () => modal.classList.add("show"));
   closeBtn.addEventListener("click", () => modal.classList.remove("show"));
-  window.addEventListener("click", e => {
-    if (e.target === modal) modal.classList.remove("show");
-  });
+  window.addEventListener("click", e => { if (e.target === modal) modal.classList.remove("show"); });
 }
 
 // ===== Google Login =====
-function initGoogleLogin() {
-  const googleBtn = document.getElementById("googleLoginBtn");
-  if (!googleBtn) return;
+const googleBtn = document.getElementById("googleLoginBtn");
+googleBtn.addEventListener("click", async () => {
+  const provider = new GoogleAuthProvider();
+  try {
+    const result = await signInWithPopup(auth, provider);
+    saveUser(result.user);
 
-  googleBtn.addEventListener("click", async () => {
-    const provider = new GoogleAuthProvider();
-    try {
-      const result = await signInWithPopup(auth, provider);
-      saveUser(result.user);
-      document.getElementById("loginModal").classList.remove("show");
-      window.location.href = "dashboard.html"; // redirect after login
-    } catch (err) {
-      console.error("Login failed:", err);
-    }
-  });
-}
+    // Close login modal, open quotation modal
+    document.getElementById("loginModal").classList.remove("show");
+    document.getElementById("quoteModal").classList.add("show");
+
+  } catch (err) { console.error(err); }
+});
 
 // ===== Quotation Calculator =====
 function calculateQuotation() {
@@ -369,6 +376,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   </body>
 </html>
+
 
 
 
