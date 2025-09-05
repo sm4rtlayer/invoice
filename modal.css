@@ -133,3 +133,17 @@
     margin-bottom: 4px; /* space between title and content */
     display: block;       /* ensures it’s on a separate line */
 }
+
+.service-cards .card {
+  display: flex;
+  align-items: center;
+  background: #f0f8ff; /* light blue background */
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.service-cards .card-icon {
+  font-size: 26px;
+  margin-right: 12px;
+}
