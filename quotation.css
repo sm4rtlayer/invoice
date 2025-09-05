@@ -27,13 +27,11 @@
   border: 1px solid #ccc;
 }
 
-.quotation-form button {
-  margin-top: 15px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.quotation-form button[type="submit"] {
+  margin-top: 20px;
+  display: block; /* ensure it's block */
+  width: 100%; 
+  z-index: 1; /* make sure it’s above any other content */
 }
 
 .quotation-form button:hover {
@@ -88,3 +86,4 @@
   font-size: 24px;
   cursor: pointer;
 }
+
