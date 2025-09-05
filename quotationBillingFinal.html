@@ -121,6 +121,9 @@
   <div id="userBox" class="user-box">
     <img id="userPhoto" src="" alt="User Photo">
     <span id="userName"></span>
+        <button id="logoutBtn" style="margin-left:10px; padding:4px 8px; border-radius:4px; cursor:pointer;">
+    Logout
+  </button>
   </div>
 
         <!-- Main Hero Section -->
@@ -255,12 +258,27 @@
 
 
         <script type="module">
+           import { signOut } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
             const userPhoto = document.getElementById("userPhoto");
             const userName = document.getElementById("userName");
 
             const name = sessionStorage.getItem("userName");
             const photo = sessionStorage.getItem("userPhoto");
             const email = sessionStorage.getItem("userEmail"); // optional, if saved during login
+           
+            const auth = window.auth;
+            const logoutBtn = document.getElementById("logoutBtn");
+            
+            logoutBtn.addEventListener("click", async () => {
+              try {
+                await signOut(auth); // Firebase logout
+                sessionStorage.clear(); // Clear stored user info
+                window.location.href = "index.html"; // Redirect to homepage
+              } catch (error) {
+                console.error("Logout failed:", error);
+              }
+            });
+
 
             if (!name || !photo) {
                 // Not logged in → redirect to index
@@ -322,4 +340,5 @@
     </body>
 
 </html>
+
 
