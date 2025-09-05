@@ -282,11 +282,13 @@
     // Logout handler
     logoutBtn.addEventListener("click", async () => {
       try {
-        await signOut(auth);
-        sessionStorage.clear();
-        window.location.href = "index.html";
+        await signOut(auth);        // Sign out from Firebase
+        sessionStorage.clear();      // Clear stored user info
+        window.location.href = "index.html"; // Redirect to homepage
       } catch (error) {
         console.error("Logout failed:", error);
+        // Redirect anyway if signOut fails
+        window.location.href = "index.html";
       }
     });
 
@@ -337,6 +339,7 @@
     </body>
 
 </html>
+
 
 
 
