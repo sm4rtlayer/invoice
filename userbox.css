@@ -19,6 +19,18 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  max-width: 200px; /* adjust as needed */
+  justify-content: flex-end; /* push content to the right */
+  overflow: hidden; /* prevent overflow */
+}
+
+.user-box span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* show ... if name is too long */
+  max-width: 120px; /* space for image + button */
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .user-box img {
@@ -73,3 +85,4 @@
   cursor: pointer;
   font-size: 1.2em;
 }
+
