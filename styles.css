@@ -35,6 +35,7 @@ body {
 /* Navbar items */
 .navbar ul li {
     display: inline-block;
+   padding: 8px 4px;
 }
 
 /* Links/buttons */
@@ -195,6 +196,7 @@ footer {
   text-align: center;
   padding: 1.5rem;
 }
+
 
 
 
