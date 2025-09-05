@@ -66,7 +66,7 @@ body {
   gap: 16px;
   justify-items: center;
 
-  max-width: 420px;        /* limit total width */
+  max-width: 480px;        /* limit total width */
 }
 
 .icongif-list li {
@@ -76,8 +76,8 @@ body {
 }
 
 .icongif-list img {
-  max-width: 32px;         /* slightly bigger for visibility */
-  margin-bottom: 6px;
+  max-width: 36px;         /* slightly bigger for visibility */
+  margin-bottom: 4px;
   transition: transform 0.2s ease;
 }
 
@@ -153,6 +153,7 @@ body {
   padding: 1.5rem;
   height: 60px;
 }
+
 
 
 
