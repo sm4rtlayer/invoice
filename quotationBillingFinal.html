@@ -10,7 +10,8 @@
               href="styles.css" />
         <link rel="stylesheet"
               href="modal.css" />
-        <link rel="stylesheet" href="quotation.css" />
+        <link rel="stylesheet"
+              href="quotation.css" />
     </head>
 
     <body>
@@ -69,682 +70,145 @@
                 </li>
             </ul>
         </section>
- <!-- User Box with Logout -->
-  <div id="userBox" class="user-box">
-    <img id="userPhoto" src="" alt="User Photo">
-    <span id="userName"></span>
-    <button id="logoutBtn">Logout</button>
-  </div>
 
-  <!-- Quotation Form -->
-
-
-ChatGPT
-You said:
-  <main class="heroQuotation"> 
-    <form class="quotation-form" id="quotationForm">
-      <h2>Quotation Request</h2>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" readonly>
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" readonly>
-
-      <label for="details">Project Details:</label>
-      <textarea id="details" name="details" rows="4" placeholder="Describe your project"></textarea>
-
-      <button type="submit">Submit</button>
-    </form>
-  </main> please modify the form or update, for name and email add Title Customer Information, then next title is Select Package, for "off-grid" and "on-grid", make use modal, then next title is Forecast Billing, 
-ChatGPT said:
-Got it! You want to restructure the quotation form into sections with titles, include package selection via a modal, and then a section for forecast billing. Here's a complete updated HTML layout with a modal for package selection and a structured form:
-
-<main class="heroQuotation"> 
-  <form class="quotation-form" id="quotationForm">
-    
-    <!-- Customer Information -->
-    <h2>Quotation Request</h2>
-    <h3>Customer Information</h3>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" readonly>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" readonly>
-
-    <!-- Package Selection -->
-    <h3>Select Package</h3>
-    <button type="button" id="openPackageModal">Choose Package</button>
-    <input type="hidden" id="package" name="package">
-
-    <!-- Forecast Billing -->
-    <h3>Forecast Billing</h3>
-    <label for="details">Project Details:</label>
-    <textarea id="details" name="details" rows="4" placeholder="Describe your project"></textarea>
-
-    <button type="submit">Submit</button>
-  </form>
-
-  <!-- Modal -->
-  <div id="packageModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Select Your Package</h3>
-      <button class="packageOption" data-package="off-grid">Off-Grid</button>
-      <button class="packageOption" data-package="on-grid">On-Grid</button>
-    </div>
-  </div>
-</main>
-
-<style>
-.heroQuotation {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.quotation-form h3 {
-  margin-top: 20px;
-  color: #333;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 10;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.5);
-}
-
-.modal-content {
-  background-color: #fff;
-  margin: 15% auto;
-  padding: 20px;
-  max-width: 300px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.modal-content button {
-  margin: 10px 0;
-}
-
-.close {
-  float: right;
-  font-size: 24px;
-  cursor: pointer;
-}
-</style>
-
-<script>
-const modal = document.getElementById('packageModal');
-const openModalBtn = document.getElementById('openPackageModal');
-const closeModalBtn = modal.querySelector('.close');
-const packageInput = document.getElementById('package');
-
-openModalBtn.addEventListener('click', () => {
-  modal.style.display = 'block';
-});
-
-closeModalBtn.addEventListener('click', () => {
-  modal.style.display = 'none';
-});
-
-window.addEventListener('click', (e) => {
-  if(e.target === modal) modal.style.display = 'none';
-});
-
-document.querySelectorAll('.packageOption').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const selected = btn.dataset.package;
-    packageInput.value = selected;
-    openModalBtn.textContent = `Package: ${selected}`;
-    modal.style.display = 'none';
-  });
-});
-</script>
-✅ Features:
-Customer Information section with name and email.
-
-Select Package section uses a modal for off-grid / on-grid selection.
-
-Forecast Billing section with a project details textarea.
-
-Clean modal design with click-to-close functionality.
-
-The selected package updates a hidden input to be submitted with the form.
-
-If you want, I can also enhance the Forecast Billing section to dynamically calculate estimated billing based on the selected package.
-
-Do you want me to add that?
-
-You said:
-please separate the css file
-ChatGPT said:
-Sure! We can separate the CSS into an external file. Here’s how you can structure it:
-
-HTML (quotation.html)
-<main class="heroQuotation"> 
-  <form class="quotation-form" id="quotationForm">
-    
-    <!-- Customer Information -->
-    <h2>Quotation Request</h2>
-    <h3>Customer Information</h3>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" readonly>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" readonly>
-
-    <!-- Package Selection -->
-    <h3>Select Package</h3>
-    <button type="button" id="openPackageModal">Choose Package</button>
-    <input type="hidden" id="package" name="package">
-
-    <!-- Forecast Billing -->
-    <h3>Forecast Billing</h3>
-    <label for="details">Project Details:</label>
-    <textarea id="details" name="details" rows="4" placeholder="Describe your project"></textarea>
-
-    <button type="submit">Submit</button>
-  </form>
-
-  <!-- Modal -->
-  <div id="packageModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Select Your Package</h3>
-      <button class="packageOption" data-package="off-grid">Off-Grid</button>
-      <button class="packageOption" data-package="on-grid">On-Grid</button>
-    </div>
-  </div>
-</main>
-
-<!-- Link External CSS -->
-<link rel="stylesheet" href="quotation.css">
-
-<!-- Include JS -->
-<script src="quotation.js"></script>
-CSS (quotation.css)
-.heroQuotation {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.quotation-form h3 {
-  margin-top: 20px;
-  color: #333;
-}
-
-.quotation-form label {
-  display: block;
-  margin-top: 10px;
-}
-
-.quotation-form input,
-.quotation-form textarea,
-.quotation-form button {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  box-sizing: border-box;
-}
-
-.quotation-form button {
-  margin-top: 15px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.quotation-form button:hover {
-  background-color: #0056b3;
-}
-
-/* Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 10;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.5);
-}
-
-.modal-content {
-  background-color: #fff;
-  margin: 15% auto;
-  padding: 20px;
-  max-width: 300px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.modal-content button {
-  margin: 10px 0;
-  width: 80%;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.close {
-  float: right;
-  font-size: 24px;
-  cursor: pointer;
-}
-JavaScript (quotation.js)
-const modal = document.getElementById('packageModal');
-const openModalBtn = document.getElementById('openPackageModal');
-const closeModalBtn = modal.querySelector('.close');
-const packageInput = document.getElementById('package');
-
-openModalBtn.addEventListener('click', () => {
-  modal.style.display = 'block';
-});
-
-closeModalBtn.addEventListener('click', () => {
-  modal.style.display = 'none';
-});
-
-window.addEventListener('click', (e) => {
-  if(e.target === modal) modal.style.display = 'none';
-});
-
-document.querySelectorAll('.packageOption').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const selected = btn.dataset.package;
-    packageInput.value = selected;
-    openModalBtn.textContent = `Package: ${selected}`;
-    modal.style.display = 'none';
-  });
-});
-This separates everything cleanly: HTML, CSS, and JS.
-
-If you want, I can also make the modal look more modern and mobile-friendly with a smoother animation.
-
-Do you want me to do that?
-
-You said:
-yes please, and enhance the Forecast Billing section to dynamically calculate estimated billing based on the selected package.
-ChatGPT said:
-Perfect! We can enhance your quotation form in two ways:
-
-Modern, mobile-friendly modal with smooth animation.
-
-Forecast Billing section that dynamically calculates estimated billing based on the selected package (off-grid or on-grid) and some project details (we can keep it simple for now).
-
-Here’s a full updated version with separate files:
-
-HTML (quotation.html)
-<main class="heroQuotation"> 
-  <form class="quotation-form" id="quotationForm">
-    
-    <!-- Customer Information -->
-    <h2>Quotation Request</h2>
-    <h3>Customer Information</h3>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" readonly>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" readonly>
-
-    <!-- Package Selection -->
-    <h3>Select Package</h3>
-    <button type="button" id="openPackageModal">Choose Package</button>
-    <input type="hidden" id="package" name="package">
-
-    <!-- Forecast Billing -->
-    <h3>Forecast Billing</h3>
-    <label for="details">Project Details:</label>
-    <textarea id="details" name="details" rows="4" placeholder="Describe your project"></textarea>
-    <p id="estimatedBilling">Estimated Billing: ₱0</p>
-
-    <button type="submit">Submit</button>
-  </form>
-
-  <!-- Modal -->
-  <div id="packageModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Select Your Package</h3>
-      <button class="packageOption" data-package="off-grid">Off-Grid</button>
-      <button class="packageOption" data-package="on-grid">On-Grid</button>
-    </div>
-  </div>
-</main>
-
-<link rel="stylesheet" href="quotation.css">
-<script src="quotation.js"></script>
-CSS (quotation.css)
-/* Form styling */
-.heroQuotation {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-
-.quotation-form h3 {
-  margin-top: 20px;
-  color: #333;
-}
-
-.quotation-form label {
-  display: block;
-  margin-top: 10px;
-}
-
-.quotation-form input,
-.quotation-form textarea,
-.quotation-form button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  box-sizing: border-box;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.quotation-form button {
-  margin-top: 15px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.quotation-form button:hover {
-  background-color: #0056b3;
-}
-
-/* Modal styling with smooth animation */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 10;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.5);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.modal.show {
-  display: block;
-  opacity: 1;
-}
-
-.modal-content {
-  background-color: #fff;
-  margin: 15% auto;
-  padding: 20px;
-  max-width: 300px;
-  border-radius: 10px;
-  text-align: center;
-  transform: translateY(-30px);
-  transition: transform 0.3s ease;
-}
-
-.modal.show .modal-content {
-  transform: translateY(0);
-}
-
-.modal-content button {
-  margin: 10px 0;
-  width: 80%;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.close {
-  float: right;
-  font-size: 24px;
-  cursor: pointer;
-}
-JavaScript (quotation.js)
-// Modal functionality
-const modal = document.getElementById('packageModal');
-const openModalBtn = document.getElementById('openPackageModal');
-const closeModalBtn = modal.querySelector('.close');
-const packageInput = document.getElementById('package');
-const estimatedBilling = document.getElementById('estimatedBilling');
-
-openModalBtn.addEventListener('click', () => {
-  modal.classList.add('show');
-});
-
-closeModalBtn.addEventListener('click', () => {
-  modal.classList.remove('show');
-});
-
-window.addEventListener('click', (e) => {
-  if(e.target === modal) modal.classList.remove('show');
-});
-
-// Package selection
-document.querySelectorAll('.packageOption').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const selected = btn.dataset.package;
-    packageInput.value = selected;
-    openModalBtn.textContent = `Package: ${selected}`;
-    modal.classList.remove('show');
-    calculateBilling();
-  });
-});
-
-// Dynamic Forecast Billing
-const detailsInput = document.getElementById('details');
-
-detailsInput.addEventListener('input', calculateBilling);
-
-function calculateBilling() {
-  const packageType = packageInput.value;
-  const detailsLength = detailsInput.value.length;
-
-  let baseCost = 0;
-
-  if(packageType === 'off-grid') {
-    baseCost = 50000; // example fixed cost for off-grid
-  } else if(packageType === 'on-grid') {
-    baseCost = 70000; // example fixed cost for on-grid
-  }
-
-  // Extra cost based on details length
-  const extraCost = detailsLength * 100; 
-
-  const total = baseCost + extraCost;
-
-  estimatedBilling.textContent = `Estimated Billing: ₱${total.toLocaleString()}`;
-}
-✅ Features Added:
-Smooth modal animation on open/close with fade & slide effect.
-
-Dynamic Forecast Billing: calculates estimated cost based on the selected package and project details.
-
-Responsive design: form looks good on mobile.
-
-Billing updates live as the user types in project details or selects a package.
-
-If you want, I can also add icons or a color-coded indicator for Off-Grid vs On-Grid to make the package selection visually clearer.
-
-Do you want me to do that?
-
-You said:
-it seems that submit button is not being display
-ChatGPT said:
-Ah! I see the issue. With the modal and CSS transitions, sometimes the z-index or form layout can push elements out of view, especially if the modal or form has margins/padding issues. Another common cause is that the modal was set as display: none initially, but sometimes the browser miscalculates form height when using flex or grid in the parent container.
-
-Let’s fix it step by step:
-
-CSS Fix for Button Display
-Add a few adjustments:
-
-.quotation-form button[type="submit"] {
-  margin-top: 20px;
-  display: block; /* ensure it's block */
-  width: 100%; 
-  z-index: 1; /* make sure it’s above any other content */
-}
-And make sure .heroQuotation is not limiting the height:
-
-.heroQuotation {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  position: relative; /* allow child elements to position normally */
-}
-Check HTML Structure
-Make sure the submit button is inside the form, like this:
-
-<!-- Forecast Billing -->
-<h3>Forecast Billing</h3>
-<label for="details">Project Details:</label>
-<textarea id="details" name="details" rows="4" placeholder="Describe your project"></textarea>
-<p id="estimatedBilling">Estimated Billing: ₱0</p>
-
-<!-- Submit Button -->
-<button type="submit">Submit</button>
-Extra Debug Tip
-If the button still doesn’t appear:
-
-Inspect with browser dev tools → check if the button exists in the DOM.
-
-Check if any parent container has overflow: hidden or small height restricting visibility.
-
-Remove position: absolute or z-index on unrelated elements that might overlap the button.
-
-If you want, I can rewrite the form and modal layout so that the submit button is always visible at the bottom, even on small screens, with smooth modal animation.
-
-Do you want me to do that?
-
-You said:
-Please xhange the select package section add chane title to Available Pacakages add two button offgrid and ongrid then, separatr modal each, in modal content use card for each pacakge, set1, set2, set3..use images per set, add also price, kwh capacity,
-ChatGPT said:
-Got it! You want the Package Selection section completely redesigned:
-
-Change the title to Available Packages.
-
-Two main buttons: Off-Grid and On-Grid.
-
-Each opens a separate modal.
-
-Modal content uses cards for each set (Set1, Set2, Set3).
-
-Each card shows image, price, and kWh capacity.
-
-Here’s a full implementation:
-
-HTML (quotation.html)
-<main class="heroQuotation"> 
-  <form class="quotation-form" id="quotationForm">
-    
-    <!-- Customer Information -->
-    <h2>Quotation Request</h2>
-    <h3>Customer Information</h3>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" readonly>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" readonly>
-
-    <!-- Available Packages -->
-    <h3>Available Packages</h3>
-    <div class="package-buttons">
-      <button type="button" id="openOffGridModal">Off-Grid</button>
-      <button type="button" id="openOnGridModal">On-Grid</button>
-    </div>
-    <input type="hidden" id="package" name="package">
-
-    <!-- Forecast Billing -->
-    <h3>Forecast Billing</h3>
-    <label for="details">Project Details:</label>
-    <textarea id="details" name="details" rows="4" placeholder="Describe your project"></textarea>
-    <p id="estimatedBilling">Estimated Billing: ₱0</p>
-
-    <button type="submit">Submit</button>
-  </form>
-
-  <!-- Off-Grid Modal -->
-  <div id="offGridModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Off-Grid Packages</h3>
-      <div class="package-cards">
-        <div class="card" data-package="Off-Grid Set1" data-price="50000">
-          <img src="images/offgrid1.jpg" alt="Off-Grid Set1">
-          <h4>Set 1</h4>
-          <p>Price: ₱50,000</p>
-          <p>Capacity: 3 kWh</p>
-          <button class="selectPackageBtn">Select</button>
+        <!-- User Box with Logout -->
+        <div id="userBox"
+             class="user-box">
+            <img id="userPhoto"
+                 src=""
+                 alt="User Photo">
+            <span id="userName"></span>
+            <button id="logoutBtn">Logout</button>
         </div>
-        <div class="card" data-package="Off-Grid Set2" data-price="75000">
-          <img src="images/offgrid2.jpg" alt="Off-Grid Set2">
-          <h4>Set 2</h4>
-          <p>Price: ₱75,000</p>
-          <p>Capacity: 5 kWh</p>
-          <button class="selectPackageBtn">Select</button>
-        </div>
-        <div class="card" data-package="Off-Grid Set3" data-price="100000">
-          <img src="images/offgrid3.jpg" alt="Off-Grid Set3">
-          <h4>Set 3</h4>
-          <p>Price: ₱100,000</p>
-          <p>Capacity: 8 kWh</p>
-          <button class="selectPackageBtn">Select</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- On-Grid Modal -->
-  <div id="onGridModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>On-Grid Packages</h3>
-      <div class="package-cards">
-        <div class="card" data-package="On-Grid Set1" data-price="60000">
-          <img src="images/ongrid1.jpg" alt="On-Grid Set1">
-          <h4>Set 1</h4>
-          <p>Price: ₱60,000</p>
-          <p>Capacity: 4 kWh</p>
-          <button class="selectPackageBtn">Select</button>
-        </div>
-        <div class="card" data-package="On-Grid Set2" data-price="85000">
-          <img src="images/ongrid2.jpg" alt="On-Grid Set2">
-          <h4>Set 2</h4>
-          <p>Price: ₱85,000</p>
-          <p>Capacity: 6 kWh</p>
-          <button class="selectPackageBtn">Select</button>
-        </div>
-        <div class="card" data-package="On-Grid Set3" data-price="120000">
-          <img src="images/ongrid3.jpg" alt="On-Grid Set3">
-          <h4>Set 3</h4>
-          <p>Price: ₱120,000</p>
-          <p>Capacity: 10 kWh</p>
-          <button class="selectPackageBtn">Select</button>
-        </div>
-      </div>
-    </div>
-  </div>
+        <main class="heroQuotation">
+            <form class="quotation-form"
+                  id="quotationForm">
 
-</main>
+                <!-- Customer Information -->
+                <h2>Quotation Request</h2>
+                <h3>Customer Information</h3>
+                <label for="name">Name:</label>
+                <input type="text"
+                       id="name"
+                       name="name"
+                       readonly>
 
-<script src="quotation.js"></script>
+                <label for="email">Email:</label>
+                <input type="email"
+                       id="email"
+                       name="email"
+                       readonly>
+
+                <!-- Available Packages -->
+                <h3>Available Packages</h3>
+                <div class="package-buttons">
+                    <button type="button"
+                            id="openOffGridModal">Off-Grid</button>
+                    <button type="button"
+                            id="openOnGridModal">On-Grid</button>
+                </div>
+                <input type="hidden"
+                       id="package"
+                       name="package">
+
+                <!-- Forecast Billing -->
+                <h3>Forecast Billing</h3>
+                <label for="details">Project Details:</label>
+                <textarea id="details"
+                          name="details"
+                          rows="4"
+                          placeholder="Describe your project"></textarea>
+                <p id="estimatedBilling">Estimated Billing: ₱0</p>
+
+                <button type="submit">Submit</button>
+            </form>
+
+            <!-- Off-Grid Modal -->
+            <div id="offGridModal"
+                 class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>Off-Grid Packages</h3>
+                    <div class="package-cards">
+                        <div class="card"
+                             data-package="Off-Grid Set1"
+                             data-price="50000">
+                            <img src="images/offgrid1.jpg"
+                                 alt="Off-Grid Set1">
+                            <h4>Set 1</h4>
+                            <p>Price: ₱50,000</p>
+                            <p>Capacity: 3 kWh</p>
+                            <button class="selectPackageBtn">Select</button>
+                        </div>
+                        <div class="card"
+                             data-package="Off-Grid Set2"
+                             data-price="75000">
+                            <img src="images/offgrid2.jpg"
+                                 alt="Off-Grid Set2">
+                            <h4>Set 2</h4>
+                            <p>Price: ₱75,000</p>
+                            <p>Capacity: 5 kWh</p>
+                            <button class="selectPackageBtn">Select</button>
+                        </div>
+                        <div class="card"
+                             data-package="Off-Grid Set3"
+                             data-price="100000">
+                            <img src="images/offgrid3.jpg"
+                                 alt="Off-Grid Set3">
+                            <h4>Set 3</h4>
+                            <p>Price: ₱100,000</p>
+                            <p>Capacity: 8 kWh</p>
+                            <button class="selectPackageBtn">Select</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- On-Grid Modal -->
+            <div id="onGridModal"
+                 class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>On-Grid Packages</h3>
+                    <div class="package-cards">
+                        <div class="card"
+                             data-package="On-Grid Set1"
+                             data-price="60000">
+                            <img src="images/ongrid1.jpg"
+                                 alt="On-Grid Set1">
+                            <h4>Set 1</h4>
+                            <p>Price: ₱60,000</p>
+                            <p>Capacity: 4 kWh</p>
+                            <button class="selectPackageBtn">Select</button>
+                        </div>
+                        <div class="card"
+                             data-package="On-Grid Set2"
+                             data-price="85000">
+                            <img src="images/ongrid2.jpg"
+                                 alt="On-Grid Set2">
+                            <h4>Set 2</h4>
+                            <p>Price: ₱85,000</p>
+                            <p>Capacity: 6 kWh</p>
+                            <button class="selectPackageBtn">Select</button>
+                        </div>
+                        <div class="card"
+                             data-package="On-Grid Set3"
+                             data-price="120000">
+                            <img src="images/ongrid3.jpg"
+                                 alt="On-Grid Set3">
+                            <h4>Set 3</h4>
+                            <p>Price: ₱120,000</p>
+                            <p>Capacity: 10 kWh</p>
+                            <button class="selectPackageBtn">Select</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <script src="quotation.js"></script>
         <!-- Sticky Footer -->
         <footer class="footer">
             <p>© 2025 Gamay Solarista. All rights reserved.</p>
@@ -848,53 +312,53 @@ HTML (quotation.html)
             </div>
         </div>
 
-<script type="module">
-    import { signOut } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+        <script type="module">
+            import { signOut } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
-    const userPhoto = document.getElementById("userPhoto");
-    const userName = document.getElementById("userName");
-    const logoutBtn = document.getElementById("logoutBtn");
+            const userPhoto = document.getElementById("userPhoto");
+            const userName = document.getElementById("userName");
+            const logoutBtn = document.getElementById("logoutBtn");
 
-    const name = sessionStorage.getItem("userName");
-    const photo = sessionStorage.getItem("userPhoto");
-    const email = sessionStorage.getItem("userEmail");
+            const name = sessionStorage.getItem("userName");
+            const photo = sessionStorage.getItem("userPhoto");
+            const email = sessionStorage.getItem("userEmail");
 
-    const auth = window.auth;
+            const auth = window.auth;
 
-    // Redirect if user is not logged in
-    if (!name || !photo) {
-      window.location.href = "index.html";
-    } else {
-      // Populate user box
-      userPhoto.src = photo;
-      userName.textContent = name;
+            // Redirect if user is not logged in
+            if (!name || !photo) {
+                window.location.href = "index.html";
+            } else {
+                // Populate user box
+                userPhoto.src = photo;
+                userName.textContent = name;
 
-      // Auto-fill form
-      document.getElementById("name").value = name;
-      document.getElementById("email").value = email || "";
-    }
+                // Auto-fill form
+                document.getElementById("name").value = name;
+                document.getElementById("email").value = email || "";
+            }
 
-    // Logout handler
-    logoutBtn.addEventListener("click", async () => {
-      try {
-        await signOut(auth);        // Sign out from Firebase
-        sessionStorage.clear();      // Clear stored user info
-        window.location.href = "index.html"; // Redirect to homepage
-      } catch (error) {
-        console.error("Logout failed:", error);
-        // Redirect anyway if signOut fails
-        window.location.href = "index.html";
-      }
-    });
+            // Logout handler
+            logoutBtn.addEventListener("click", async () => {
+                try {
+                    await signOut(auth);        // Sign out from Firebase
+                    sessionStorage.clear();      // Clear stored user info
+                    window.location.href = "index.html"; // Redirect to homepage
+                } catch (error) {
+                    console.error("Logout failed:", error);
+                    // Redirect anyway if signOut fails
+                    window.location.href = "index.html";
+                }
+            });
 
-    // Handle form submission
-    const form = document.getElementById("quotationForm");
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      alert("Quotation submitted!");
-      // Optionally: push to Firebase Firestore or send via email
-    });
-  </script>
+            // Handle form submission
+            const form = document.getElementById("quotationForm");
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                alert("Quotation submitted!");
+                // Optionally: push to Firebase Firestore or send via email
+            });
+        </script>
 
 
         <script>
@@ -934,10 +398,3 @@ HTML (quotation.html)
     </body>
 
 </html>
-
-
-
-
-
-
-
