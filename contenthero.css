@@ -1,6 +1,6 @@
 /* hero.css */
 
-header.hero {
+heroMain {
   position: relative;
   height: 70vh;
   display: flex;
@@ -58,3 +58,4 @@ header.hero {
 .hero-text .btn:hover {
   background: #e0a600;
 }
+
