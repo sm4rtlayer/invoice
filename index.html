@@ -105,6 +105,48 @@
   </div>
 </div>
 
+    <!-- Services Modal -->
+<div id="servicesModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeServices">&times;</span>
+    <h2 class="modal-title">Our Services</h2>
+
+    <div class="service-cards">
+      <div class="card">
+        <div class="card-icon">🔆</div>
+        <div class="card-info">
+          <span class="title">Solar Panel Installation</span>
+          <p>We design and install solar panel systems tailored to your energy needs.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🔋</div>
+        <div class="card-info">
+          <span class="title">Battery Storage</span>
+          <p>Store excess solar energy with high-capacity battery solutions.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-info">
+          <span class="title">Inverter Setup</span>
+          <p>Efficient inverters to convert solar power for home and business use.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🛠️</div>
+        <div class="card-info">
+          <span class="title">Maintenance & Support</span>
+          <p>Reliable maintenance and technical support to keep your system running smoothly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
     
 
     <!-- Modal JS -->
@@ -115,6 +157,20 @@
     const contactModal = document.getElementById('contactModal');
     const openContactBtn = document.getElementById('openContact'); 
     const closeContactBtn = document.getElementById('closeContact');
+    const servicesModal = document.getElementById('contactModal');
+    const openServicesBtn = document.getElementById('openContact'); 
+    const closeServicesBtn = document.getElementById('closeContact');
+        
+        // Open Services modal
+document.getElementById("openServices").onclick = function() {
+  document.getElementById("servicesModal").style.display = "flex";
+};
+
+// Close Services modal
+document.getElementById("closeServices").onclick = function() {
+  document.getElementById("servicesModal").style.display = "none";
+};
+        
     
     // Open contact modal
     openContactBtn.addEventListener('click', () => {
@@ -154,6 +210,7 @@
 </body>
 
 </html>
+
 
 
 
