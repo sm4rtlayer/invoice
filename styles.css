@@ -155,7 +155,7 @@ body {
 .footer {
   background: #bcb8b8;
   color: #000;
-  min-height: 60px;
+  min-height: 30px;
 
   position: fixed;
   left: 0;
@@ -169,8 +169,9 @@ body {
 }
 
 main {
-  padding-bottom: 30px; /* keep content above footer */
+  padding-bottom: 60px; /* keep content above footer */
 }
+
 
 
 
