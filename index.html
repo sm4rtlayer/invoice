@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport"
@@ -7,80 +8,88 @@
     <title>Gamay Solarista</title>
     <link rel="stylesheet"
           href="styles.css" />
-     <link rel="stylesheet"
+    <link rel="stylesheet"
           href="userbox.css" />
     <link rel="stylesheet"
           href="modal.css" />
-      <style>
-    /* Form container styling */
-    .form-container {
-      padding: 1em;
-      max-width: 500px;
-      margin: 2em auto;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-    }
+    <style>
+      /* Form container styling */
+      .form-container {
+        padding: 1em;
+        max-width: 500px;
+        margin: 2em auto;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+      }
 
-    .form-container input,
-    .form-container button {
-      width: 100%;
-      margin: 0.5em 0;
-      padding: 0.5em;
-    }
+      .form-container input,
+      .form-container button {
+        width: 100%;
+        margin: 0.5em 0;
+        padding: 0.5em;
+      }
 
-    #result {
-      margin-top: 1em;
-      padding: 1em;
-      border: 1px solid #ccc;
-      display: none;
-      border-radius: 6px;
-    }
-  </style>
+      #result {
+        margin-top: 1em;
+        padding: 1em;
+        border: 1px solid #ccc;
+        display: none;
+        border-radius: 6px;
+      }
+    </style>
   </head>
 
   <body>
 
-  <header class="site-header">
-    <a href="index.html" class="logo">
-      <img src="images/gamay_logo_brand.png" alt="Gamay Solarista Logo">
-    </a>
-  </header>
+    <header class="site-header">
+      <a href="index.html"
+         class="logo">
+        <img src="images/gamay_logo_brand.png"
+             alt="Gamay Solarista Logo">
+      </a>
+    </header>
 
     <!-- Icon Links Section -->
-    <section class="icon-links" aria-label="Brand partners">
+    <section class="icon-links"
+             aria-label="Brand partners">
       <ul class="icongif-list">
         <li>
           <a href="#"
              id="openAbout">
-            <img src="gif/solarista_about.gif" alt="About" />
+            <img src="gif/solarista_about.gif"
+                 alt="About" />
             <span>About</span>
           </a>
         </li>
         <li>
           <a href="#"
              id="openContact">
-            <img src="gif/solarista_contact.gif" alt="Contact" />
+            <img src="gif/solarista_contact.gif"
+                 alt="Contact" />
             <span>Contact</span>
           </a>
         </li>
         <li>
           <a href="#"
              id="openServices">
-            <img src="gif/solarista_services.gif" alt="Services" />
+            <img src="gif/solarista_services.gif"
+                 alt="Services" />
             <span>Services</span>
           </a>
         </li>
         <li>
           <a href="#"
              id="openAchievements">
-            <img src="gif/solarista_achievements.gif" alt="Achievements" />
+            <img src="gif/solarista_achievements.gif"
+                 alt="Achievements" />
             <span>Milestone</span>
           </a>
         </li>
         <li>
           <a href="#"
              id="openPortfolio">
-            <img src="gif/solarista_portfolio.gif" alt="Portfolio" />
+            <img src="gif/solarista_portfolio.gif"
+                 alt="Portfolio" />
             <span>Portfolio</span>
           </a>
         </li>
@@ -89,15 +98,21 @@
 
     <!-- Main Hero Section -->
     <main class="heroMain">
-      <video autoplay muted loop playsinline class="hero-video">
-        <source src="webp/bg_main.webm" type="video/webm">
+      <video autoplay
+             muted
+             loop
+             playsinline
+             class="hero-video">
+        <source src="webp/bg_main.webm"
+                type="video/webm">
         Your browser does not support the video tag.
       </video>
 
       <div class="hero-text">
         <h2>Powering Tomorrow, Today</h2>
         <p>Affordable and sustainable solar solutions for every home.</p>
-<a href="quotationBillingFinal.html" class="btn">Quote & Billing Forecast</a>
+        <a href=""
+           class="btn">Quote & Billing Forecast</a>
 
       </div>
     </main>
@@ -109,9 +124,11 @@
 
     <!-- Modals + Scripts remain unchanged -->
     <!-- About Modal -->
-    <div id="aboutModal" class="modal">
+    <div id="aboutModal"
+         class="modal">
       <div class="modal-content">
-        <span class="close" id="closeAbout">&times;</span>
+        <span class="close"
+              id="closeAbout">&times;</span>
         <h2 class="modal-title">About Us</h2>
         <p>
           At Gamay Solarista, we are committed to making clean energy within reach of everyone. We specialize in
@@ -122,9 +139,11 @@
     </div>
 
     <!-- Services Modal -->
-    <div id="servicesModal" class="modal">
+    <div id="servicesModal"
+         class="modal">
       <div class="modal-content">
-        <span class="close" id="closeServices">&times;</span>
+        <span class="close"
+              id="closeServices">&times;</span>
         <h2 class="modal-title">Our Services</h2>
         <div class="service-cards">
           <div class="card">
@@ -160,9 +179,11 @@
     </div>
 
     <!-- Contact Modal -->
-    <div id="contactModal" class="modal">
+    <div id="contactModal"
+         class="modal">
       <div class="modal-content">
-        <span class="close" id="closeContact">&times;</span>
+        <span class="close"
+              id="closeContact">&times;</span>
         <h2 class="modal-title">Contact Us</h2>
         <div class="contact-cards">
           <div class="card">
@@ -197,34 +218,63 @@
       </div>
     </div>
 
+    <script type="module"
+            src="firebase-login.js"></script>
+
     <script>
+      import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+
+        // Use your already initialized auth
+        const provider = new GoogleAuthProvider();
+        const quoteBtn = document.querySelector(".btn");
+
+        quoteBtn.addEventListener("click", async (e) => {
+          e.preventDefault(); // Prevent default link behavior
+          try {
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+            console.log("Login success:", user.displayName);
+
+            // Optionally save user info for next page
+            sessionStorage.setItem("userName", user.displayName);
+            sessionStorage.setItem("userPhoto", user.photoURL);
+
+            // Redirect to quotationBillingFinal.html
+            window.location.href = "quotationBillingFinal.html";
+          } catch (error) {
+            console.error("Login failed:", error);
+            // Stay on current page
+            window.location.href = "index.html";
+          }
+        });
+
       function setupModal(openBtnId, modalId, closeBtnId) {
-  const modal = document.getElementById(modalId);
-  const openBtn = document.getElementById(openBtnId);
-  const closeBtn = document.getElementById(closeBtnId);
+        const modal = document.getElementById(modalId);
+        const openBtn = document.getElementById(openBtnId);
+        const closeBtn = document.getElementById(closeBtnId);
 
-  if (!modal || !openBtn || !closeBtn) return;
+        if (!modal || !openBtn || !closeBtn) return;
 
-  // Open modal
-  openBtn.addEventListener("click", () => modal.classList.add("show"));
+        // Open modal
+        openBtn.addEventListener("click", () => modal.classList.add("show"));
 
-  // Close modal
-  closeBtn.addEventListener("click", () => modal.classList.remove("show"));
+        // Close modal
+        closeBtn.addEventListener("click", () => modal.classList.remove("show"));
 
-  // Close when clicking outside the modal content
-  window.addEventListener("click", (event) => {
-    if (event.target === modal) modal.classList.remove("show");
-  });
-}
+        // Close when clicking outside the modal content
+        window.addEventListener("click", (event) => {
+          if (event.target === modal) modal.classList.remove("show");
+        });
+      }
 
-// Initialize all static modals
-document.addEventListener("DOMContentLoaded", () => {
-  setupModal("openAbout", "aboutModal", "closeAbout");
-  setupModal("openServices", "servicesModal", "closeServices");
-  setupModal("openContact", "contactModal", "closeContact");
-});
+      // Initialize all static modals
+      document.addEventListener("DOMContentLoaded", () => {
+        setupModal("openAbout", "aboutModal", "closeAbout");
+        setupModal("openServices", "servicesModal", "closeServices");
+        setupModal("openContact", "contactModal", "closeContact");
+      });
 
-      
+
     </script>
 
 
@@ -232,25 +282,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
