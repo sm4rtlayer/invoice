@@ -58,13 +58,15 @@ body {
 
 .icongif-list {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;          /* center container */
   padding: 0;
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 16px;
   justify-items: center;
+
+  max-width: 420px;        /* limit total width */
 }
 
 .icongif-list li {
@@ -74,8 +76,8 @@ body {
 }
 
 .icongif-list img {
-  max-width: 24px;
-  margin-bottom: 8px;
+  max-width: 36px;         /* slightly bigger for visibility */
+  margin-bottom: 6px;
   transition: transform 0.2s ease;
 }
 
@@ -84,14 +86,20 @@ body {
 }
 
 .icongif-list span {
-  font-size: 14px;
+  font-size: 13px;         /* adjusted to fit within width */
   color: #333;
+  line-height: 1.2;
 }
 
+/* Hero Links Section */
 .heroMain {
   position: relative;
-  width: 100%;
-  height: calc(100vh - 70px); /* adjust 70px if your navbar height changes */
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
   overflow: hidden;
 }
 
@@ -145,6 +153,7 @@ body {
   padding: 1.5rem;
   height: 60px;
 }
+
 
 
 
