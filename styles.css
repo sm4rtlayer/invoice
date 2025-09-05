@@ -76,7 +76,7 @@ body {
 }
 
 .icongif-list img {
-  max-width: 36px;         /* slightly bigger for visibility */
+  max-width: 32px;         /* slightly bigger for visibility */
   margin-bottom: 6px;
   transition: transform 0.2s ease;
 }
@@ -153,6 +153,7 @@ body {
   padding: 1.5rem;
   height: 60px;
 }
+
 
 
 
