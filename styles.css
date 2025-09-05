@@ -157,15 +157,28 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8em 1.2em;
+  padding: 0.5em 1em;
   background: #f7f7f7;
   border-bottom: 1px solid #ddd;
 }
 
-.site-header .logo {
-  font-size: 1.4rem;
-  font-weight: bold;
+.site-header .logo img {
+  height: 50px;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  gap: 1em;
   margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
 }
 
 .user-box {
@@ -185,15 +198,16 @@ body {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  background: #e74c3c;
+  background: #2c82c9;
   color: #fff;
   font-size: 0.9rem;
 }
 
 .user-box button:hover {
-  background: #c0392b;
+  background: #236092;
 }
 
+/* Footer */
 .footer {
   background: #bcb8b8;
   color: #000;
@@ -213,6 +227,7 @@ body {
 main {
   padding-bottom: 60px; /* keep content above footer */
 }
+
 
 
 
