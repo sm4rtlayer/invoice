@@ -58,7 +58,7 @@ body {
 
 .icongif-list {
   list-style: none;
-  margin: 0 auto;          /* center container */
+  margin: 0 auto;
   padding: 0;
 
   display: grid;
@@ -66,17 +66,23 @@ body {
   gap: 16px;
   justify-items: center;
 
-  max-width: 480px;        /* limit total width */
+  max-width: 480px;  /* keeps the block from stretching too wide */
 }
 
 .icongif-list li {
+  /* plain container */
+}
+
+.icongif-list a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-decoration: none;
+  color: inherit; /* keep text consistent */
 }
 
 .icongif-list img {
-  max-width: 36px;         /* slightly bigger for visibility */
+  max-width: 36px;
   transition: transform 0.2s ease;
 }
 
@@ -85,9 +91,12 @@ body {
 }
 
 .icongif-list span {
-  font-size: 13px;         /* adjusted to fit within width */
+  font-size: 13px;
   color: #333;
-  margin-top: 4px; 
+  margin-top: 4px;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap; /* stops labels from wrapping weirdly */
 }
 
 /* Hero Links Section */
@@ -152,6 +161,7 @@ body {
   padding: 1.5rem;
   min-height: 60px;   /* safe baseline */
 }
+
 
 
 
