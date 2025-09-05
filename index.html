@@ -247,23 +247,28 @@ function showUser() {
   const user = getUser();
   if (user) {
     userBox.innerHTML = `
-      <img src="${user.photo}" alt="Profile">
-      <span>${user.name}</span>
-      <button id="logoutBtn">Logout</button>
+      <img src="${user.photo}" alt="Profile" class="profile-img">
+      <span class="profile-name">${user.name}</span>
+      <button id="logoutBtn" class="hidden">Logout</button>
     `;
-    userBox.querySelector("img").addEventListener("click", () => userBox.classList.toggle("active"));
-    document.getElementById("logoutBtn").addEventListener("click", logout);
+
+    const img = userBox.querySelector(".profile-img");
+    const logoutBtn = document.getElementById("logoutBtn");
+    img.addEventListener("click", () => {
+      logoutBtn.classList.toggle("hidden");
+    });
+
+    logoutBtn.addEventListener("click", () => {
+      signOut(auth).then(() => {
+        localStorage.removeItem("user");
+        showUser();
+      });
+    });
+
   } else {
     userBox.innerHTML = `<button id="openLogin">Login</button>`;
     setupModal("openLogin", "loginModal", "closeLogin");
   }
-}
-
-function logout() {
-  signOut(auth).then(() => {
-    localStorage.removeItem("user");
-    showUser();
-  });
 }
 
 // ===== Autofill form =====
@@ -344,7 +349,6 @@ function calculateQuotation() {
   `;
 }
 
-// ===== Initialize =====
 window.addEventListener("DOMContentLoaded", () => {
   showUser();
   autofillForm();
@@ -362,8 +366,10 @@ window.addEventListener("DOMContentLoaded", () => {
 </script>
 
 
+
   </body>
 </html>
+
 
 
 
