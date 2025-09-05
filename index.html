@@ -18,7 +18,7 @@
              alt="Gamay Solarista Logo" />
       </a>
       <ul>
-        <li><button id="openLogin">Login</button></li>
+         <div id="userBox" class="user-box"></div>
       </ul>
     </nav>
 
@@ -190,41 +190,7 @@
 </div>
 
 
-    <!-- Quotation Form -->
-    <div class="form-container">
-      <h2>Solar Quotation</h2>
-      <label>Customer Name</label>
-      <input type="text" id="customerName" required>
 
-      <label>Email</label>
-      <input type="email" id="customerEmail" required>
-
-      <label>System Capacity (kW)</label>
-      <input type="number" id="capacity" step="0.1" required>
-
-      <label>Sun Hours per Day</label>
-      <input type="number" id="sunHours" step="0.1" required>
-
-      <label>Electricity Rate (₱/kWh)</label>
-      <input type="number" id="rate" step="0.1" required>
-
-      <label>Monthly Bill (₱)</label>
-      <input type="number" id="monthlyBill" step="0.1" required>
-
-      <button type="button" onclick="calculate()">Generate Quotation</button>
-
-      <div id="result"></div>
-    </div>
-
-    <!-- Load Firebase SDK -->
-    <script type="module"
-            src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js"></script>
-    <script type="module"
-            src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js"></script>
-
-    <!-- Load your Firebase script -->
-    <script type="module"
-            src="firebase.js"></script>
 
     <!-- Modal JS -->
     <script>
@@ -257,6 +223,7 @@
     </script>
   </body>
 </html>
+
 
 
 
