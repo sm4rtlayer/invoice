@@ -206,10 +206,7 @@
     </div>
   </div>
 
-
-
-    <!-- Modal JS -->
-<script type="module">
+    <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
@@ -226,60 +223,61 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Show user box
+// ===== User handling =====
+function getUser() {
+  return JSON.parse(localStorage.getItem("user"));
+}
+
+function saveUser(user) {
+  const userData = {
+    name: user.displayName,
+    email: user.email,
+    photo: user.photoURL
+  };
+  localStorage.setItem("user", JSON.stringify(userData));
+  showUser();
+  autofillForm();
+}
+
 function showUser() {
   const userBox = document.getElementById("userBox");
-  const user = JSON.parse(localStorage.getItem("user"));
-
   if (!userBox) return;
 
+  const user = getUser();
   if (user) {
     userBox.innerHTML = `
       <img src="${user.photo}" alt="Profile">
       <span>${user.name}</span>
       <button id="logoutBtn">Logout</button>
     `;
-
-    const img = userBox.querySelector("img");
-    img.addEventListener("click", () => {
-      userBox.classList.toggle("active");
-    });
-
-    document.getElementById("logoutBtn").addEventListener("click", () => {
-      signOut(auth).then(() => {
-        localStorage.removeItem("user");
-        showUser();
-      });
-    });
+    userBox.querySelector("img").addEventListener("click", () => userBox.classList.toggle("active"));
+    document.getElementById("logoutBtn").addEventListener("click", logout);
   } else {
     userBox.innerHTML = `<button id="openLogin">Login</button>`;
     setupModal("openLogin", "loginModal", "closeLogin");
   }
 }
 
-// Save user and autofill
-function saveUser(user) {
-  localStorage.setItem("user", JSON.stringify({
-    name: user.displayName,
-    email: user.email,
-    photo: user.photoURL
-  }));
-  showUser();
-  autofillForm();
+function logout() {
+  signOut(auth).then(() => {
+    localStorage.removeItem("user");
+    showUser();
+  });
 }
 
-// Autofill form inputs if they exist
+// ===== Autofill form =====
 function autofillForm() {
-  const user = JSON.parse(localStorage.getItem("user"));
-  if (user) {
-    const nameInput = document.getElementById("customerName");
-    const emailInput = document.getElementById("customerEmail");
-    if (nameInput) nameInput.value = user.name || "";
-    if (emailInput) emailInput.value = user.email || "";
-  }
+  const user = getUser();
+  if (!user) return;
+
+  const nameInput = document.getElementById("customerName");
+  const emailInput = document.getElementById("customerEmail");
+
+  if (nameInput) nameInput.value = user.name;
+  if (emailInput) emailInput.value = user.email;
 }
 
-// Modal setup
+// ===== Modal handling =====
 function setupModal(openBtnId, modalId, closeBtnId) {
   const modal = document.getElementById(modalId);
   const openBtn = document.getElementById(openBtnId);
@@ -293,32 +291,78 @@ function setupModal(openBtnId, modalId, closeBtnId) {
   });
 }
 
-// DOM ready
+// ===== Google Login =====
+function initGoogleLogin() {
+  const googleBtn = document.getElementById("googleLoginBtn");
+  if (!googleBtn) return;
+
+  googleBtn.addEventListener("click", async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      saveUser(result.user);
+      document.getElementById("loginModal").classList.remove("show");
+      window.location.href = "dashboard.html"; // redirect after login
+    } catch (err) {
+      console.error("Login failed:", err);
+    }
+  });
+}
+
+// ===== Quotation Calculator =====
+function calculateQuotation() {
+  const name = document.getElementById("customerName").value;
+  const capacity = parseFloat(document.getElementById("capacity").value);
+  const sunHours = parseFloat(document.getElementById("sunHours").value);
+  const rate = parseFloat(document.getElementById("rate").value);
+  const monthlyBill = parseFloat(document.getElementById("monthlyBill").value);
+
+  const dailyKWh = capacity * sunHours;
+  const monthlyKWh = dailyKWh * 30;
+  const monthlySavings = monthlyKWh * rate;
+  const annualSavings = monthlySavings * 12;
+  const newBill = Math.max(0, monthlyBill - monthlySavings);
+  const totalCost = capacity * 50000;
+  const paybackPeriod = totalCost / monthlySavings || 0;
+  const roi = (annualSavings / totalCost * 100) || 0;
+
+  const resultBox = document.getElementById("result");
+  resultBox.style.display = "block";
+  resultBox.innerHTML = `
+    <h3>Quotation for ${name}</h3>
+    <p><b>System Capacity:</b> ${capacity} kW</p>
+    <p><b>Estimated Daily Production:</b> ${dailyKWh.toFixed(2)} kWh</p>
+    <p><b>Estimated Monthly Production:</b> ${monthlyKWh.toFixed(2)} kWh</p>
+    <p><b>Current Monthly Bill:</b> ₱${monthlyBill.toLocaleString()}</p>
+    <p><b>Estimated Savings Per Month:</b> ₱${monthlySavings.toFixed(2)}</p>
+    <p><b>Estimated Annual Savings:</b> ₱${annualSavings.toFixed(2)}</p>
+    <p><b>New Estimated Bill:</b> ₱${newBill.toFixed(2)}</p>
+    <p><b>Total System Cost:</b> ₱${totalCost.toLocaleString()}</p>
+    <p><b>Payback Period:</b> ${paybackPeriod.toFixed(1)} months</p>
+    <p><b>ROI:</b> ${roi.toFixed(1)}% per year</p>
+  `;
+}
+
+// ===== Initialize =====
 window.addEventListener("DOMContentLoaded", () => {
   showUser();
   autofillForm();
+  initGoogleLogin();
 
-  // Google login
-  const googleBtn = document.getElementById("googleLoginBtn");
-  if (googleBtn) {
-    googleBtn.addEventListener("click", async () => {
-      const provider = new GoogleAuthProvider();
-      try {
-        const result = await signInWithPopup(auth, provider);
-        saveUser(result.user);
-        document.getElementById("loginModal").classList.remove("show");
-        window.location.href = "dashboard.html"; // redirect after login
-      } catch (err) {
-        console.error(err);
-      }
-    });
-  }
+  // Setup other modals
+  setupModal("openAbout", "aboutModal", "closeAbout");
+  setupModal("openServices", "servicesModal", "closeServices");
+  setupModal("openContact", "contactModal", "closeContact");
+
+  // Expose calculator globally
+  window.calculate = calculateQuotation;
 });
-
 </script>
+
 
   </body>
 </html>
+
 
 
 
