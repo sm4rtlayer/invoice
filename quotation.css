@@ -1,6 +1,5 @@
-/* Form styling */
 .heroQuotation {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -27,18 +26,31 @@
   border: 1px solid #ccc;
 }
 
-.quotation-form button[type="submit"] {
-  margin-top: 20px;
-  display: block; /* ensure it's block */
-  width: 100%; 
-  z-index: 1; /* make sure it’s above any other content */
+.quotation-form button {
+  margin-top: 15px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .quotation-form button:hover {
   background-color: #0056b3;
 }
 
-/* Modal styling with smooth animation */
+/* Package Buttons */
+.package-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.package-buttons button {
+  width: 48%;
+}
+
+/* Modal Styles */
 .modal {
   display: none;
   position: fixed;
@@ -60,9 +72,9 @@
 
 .modal-content {
   background-color: #fff;
-  margin: 15% auto;
+  margin: 10% auto;
   padding: 20px;
-  max-width: 300px;
+  max-width: 500px;
   border-radius: 10px;
   text-align: center;
   transform: translateY(-30px);
@@ -73,17 +85,46 @@
   transform: translateY(0);
 }
 
-.modal-content button {
-  margin: 10px 0;
-  width: 80%;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 .close {
   float: right;
   font-size: 24px;
   cursor: pointer;
 }
 
+/* Package Cards */
+.package-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.card {
+  width: 48%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.selectPackageBtn {
+  margin-top: 10px;
+  padding: 8px;
+  width: 100%;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.selectPackageBtn:hover {
+  background-color: #218838;
+}
