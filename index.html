@@ -51,24 +51,61 @@
         <p>© 2025 Gamay Solarista.</p>
     </footer>
 
-    <!-- Modal HTML -->
-    <div id="aboutModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>About Us</h2>
-            <p>
-                At Gamay Solarista, we believe clean energy should be accessible to everyone.
-                We provide reliable, cost-effective solar installations tailored to your needs.
-            </p>
-        </div>
-    </div>
+  <!-- About Modal -->
+<div id="aboutModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeAbout">&times;</span>
+    <h2 class="modal-title">About Us</h2>
+    <p>
+      We are a solar energy company committed to providing affordable and
+      sustainable solutions for homes and businesses.
+    </p>
+  </div>
+</div>
 
-    <!-- Contact Modal -->
+<!-- Services Modal -->
+<div id="servicesModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeServices">&times;</span>
+    <h2 class="modal-title">Our Services</h2>
+    <div class="service-cards">
+      <div class="card">
+        <div class="card-icon">🔆</div>
+        <div class="card-info">
+          <span class="title">Solar Panel Installation</span>
+          <p>Custom-designed solar panel systems for your energy needs.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔋</div>
+        <div class="card-info">
+          <span class="title">Battery Storage</span>
+          <p>High-capacity battery solutions for energy independence.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-info">
+          <span class="title">Inverter Setup</span>
+          <p>Efficient inverters to maximize solar energy use.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛠️</div>
+        <div class="card-info">
+          <span class="title">Maintenance & Support</span>
+          <p>Reliable service to keep your system running smoothly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Modal -->
 <div id="contactModal" class="modal">
   <div class="modal-content">
     <span class="close" id="closeContact">&times;</span>
     <h2 class="modal-title">Contact Us</h2>
-
     <div class="contact-cards">
       <div class="card">
         <div class="card-icon">📍</div>
@@ -77,7 +114,6 @@
           <p>Brgy. Burabod, Gamay Northern Samar, Philippines</p>
         </div>
       </div>
-
       <div class="card">
         <div class="card-icon">📞</div>
         <div class="card-info">
@@ -85,7 +121,6 @@
           <p>0927-513-2703</p>
         </div>
       </div>
-
       <div class="card">
         <div class="card-icon">✉️</div>
         <div class="card-info">
@@ -93,7 +128,6 @@
           <p>gamaysolarista1987@gmail.com</p>
         </div>
       </div>
-
       <div class="card">
         <div class="card-icon">🌐</div>
         <div class="card-info">
@@ -105,111 +139,46 @@
   </div>
 </div>
 
-    <!-- Services Modal -->
-<div id="servicesModal" class="modal">
-  <div class="modal-content">
-    <span class="close" id="closeServices">&times;</span>
-    <h2 class="modal-title">Our Services</h2>
-
-    <div class="service-cards">
-      <div class="card">
-        <div class="card-icon">🔆</div>
-        <div class="card-info">
-          <span class="title">Solar Panel Installation</span>
-          <p>We design and install solar panel systems tailored to your energy needs.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">🔋</div>
-        <div class="card-info">
-          <span class="title">Battery Storage</span>
-          <p>Store excess solar energy with high-capacity battery solutions.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">⚡</div>
-        <div class="card-info">
-          <span class="title">Inverter Setup</span>
-          <p>Efficient inverters to convert solar power for home and business use.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">🛠️</div>
-        <div class="card-info">
-          <span class="title">Maintenance & Support</span>
-          <p>Reliable maintenance and technical support to keep your system running smoothly.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
     
 
     <!-- Modal JS -->
-    <script>
-    const modal = document.getElementById('aboutModal');
-    const openBtn = document.getElementById('openAbout');
-    const closeBtn = modal.querySelector('.close');
-    const contactModal = document.getElementById('contactModal');
-    const openContactBtn = document.getElementById('openContact'); 
-    const closeContactBtn = document.getElementById('closeContact');
-    const servicesModal = document.getElementById('contactModal');
-    const openServicesBtn = document.getElementById('openContact'); 
-    const closeServicesBtn = document.getElementById('closeContact');
-        
-        // Open Services modal
-document.getElementById("openServices").onclick = function() {
-  document.getElementById("servicesModal").style.display = "flex";
-};
+<script>
+  // Reusable function to handle modals
+  function setupModal(openBtnId, modalId, closeBtnId) {
+    const modal = document.getElementById(modalId);
+    const openBtn = document.getElementById(openBtnId);
+    const closeBtn = document.getElementById(closeBtnId);
 
-// Close Services modal
-document.getElementById("closeServices").onclick = function() {
-  document.getElementById("servicesModal").style.display = "none";
-};
-        
-    
-    // Open contact modal
-    openContactBtn.addEventListener('click', () => {
-        contactModal.classList.add('show');
-    });
-    
-    // Close contact modal
-    closeContactBtn.addEventListener('click', () => {
-        contactModal.classList.remove('show');
-    });
-    
-    // Close modal when clicking outside content
-    window.addEventListener('click', (event) => {
-        if (event.target === contactModal) {
-            contactModal.classList.remove('show');
-        }
+    if (!modal || !openBtn || !closeBtn) return; // safety check
+
+    // Open modal
+    openBtn.addEventListener("click", () => {
+      modal.classList.add("show");
     });
 
-    // Open modal on button click
-    openBtn.addEventListener('click', () => {
-        modal.classList.add('show');
+    // Close modal
+    closeBtn.addEventListener("click", () => {
+      modal.classList.remove("show");
     });
-    
-    // Close modal when clicking 'X'
-    closeBtn.addEventListener('click', () => {
-        modal.classList.remove('show');
+
+    // Close when clicking outside content
+    window.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        modal.classList.remove("show");
+      }
     });
-    
-    // Close modal when clicking outside content
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.classList.remove('show');
-        }
-    });
-        
-    </script>
+  }
+
+  // Initialize modals
+  setupModal("openAbout", "aboutModal", "closeAbout");
+  setupModal("openServices", "servicesModal", "closeServices");
+  setupModal("openContact", "contactModal", "closeContact");
+</script>
+
 </body>
 
 </html>
+
 
 
 
