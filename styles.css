@@ -74,7 +74,7 @@ body {
 }
 
 .icongif-list img {
-  max-width: 70px;
+  max-width: 24px;
   margin-bottom: 8px;
   transition: transform 0.2s ease;
 }
@@ -145,6 +145,7 @@ body {
   padding: 1.5rem;
   height: 60px;
 }
+
 
 
 
