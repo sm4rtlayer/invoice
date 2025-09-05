@@ -77,7 +77,6 @@ body {
 
 .icongif-list img {
   max-width: 36px;         /* slightly bigger for visibility */
-  margin-bottom: 4px;
   transition: transform 0.2s ease;
 }
 
@@ -88,7 +87,7 @@ body {
 .icongif-list span {
   font-size: 13px;         /* adjusted to fit within width */
   color: #333;
-  line-height: 1.2;
+  margin-top: 4px; 
 }
 
 /* Hero Links Section */
@@ -153,6 +152,7 @@ body {
   padding: 1.5rem;
   min-height: 60px;   /* safe baseline */
 }
+
 
 
 
