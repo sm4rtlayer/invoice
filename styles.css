@@ -152,6 +152,48 @@ body {
   background: #e6a200;
 }
 
+/* Site Header Google Login Links Section */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8em 1.2em;
+  background: #f7f7f7;
+  border-bottom: 1px solid #ddd;
+}
+
+.site-header .logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.user-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-box img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.user-box button {
+  padding: 0.3em 0.8em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #e74c3c;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.user-box button:hover {
+  background: #c0392b;
+}
+
 .footer {
   background: #bcb8b8;
   color: #000;
@@ -171,6 +213,7 @@ body {
 main {
   padding-bottom: 60px; /* keep content above footer */
 }
+
 
 
 
