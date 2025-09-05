@@ -1,0 +1,90 @@
+/* Form styling */
+.heroQuotation {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.quotation-form h3 {
+  margin-top: 20px;
+  color: #333;
+}
+
+.quotation-form label {
+  display: block;
+  margin-top: 10px;
+}
+
+.quotation-form input,
+.quotation-form textarea,
+.quotation-form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.quotation-form button {
+  margin-top: 15px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.quotation-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Modal styling with smooth animation */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  display: block;
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  max-width: 300px;
+  border-radius: 10px;
+  text-align: center;
+  transform: translateY(-30px);
+  transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+  transform: translateY(0);
+}
+
+.modal-content button {
+  margin: 10px 0;
+  width: 80%;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
