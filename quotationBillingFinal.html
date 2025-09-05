@@ -10,54 +10,64 @@
               href="styles.css" />
         <link rel="stylesheet"
               href="modal.css" />
-    <style>
-      /* User box styling */
-      .user-box {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin: 20px 0;
-      }
+      <style>
+    /* User box styling */
+    .user-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 20px;
+    }
 
-      .user-box img {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
+    .user-box img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
 
-      /* Form styling */
-      .quotation-form {
-        max-width: 500px;
-        margin: 0 auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-      }
+    .user-box button {
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      border: 1px solid #007BFF;
+      background-color: white;
+      color: #007BFF;
+      font-weight: bold;
+    }
 
-      .quotation-form label {
-        display: block;
-        margin: 10px 0 5px;
-      }
+    /* Form styling */
+    .quotation-form {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
 
-      .quotation-form input,
-      .quotation-form textarea {
-        width: 100%;
-        padding: 8px;
-        border-radius: 4px;
-        border: 1px solid #aaa;
-      }
+    .quotation-form label {
+      display: block;
+      margin: 10px 0 5px;
+    }
 
-      .quotation-form button {
-        margin-top: 15px;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 6px;
-        background-color: #007BFF;
-        color: white;
-        cursor: pointer;
-      }
-    </style>
+    .quotation-form input, 
+    .quotation-form textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #aaa;
+    }
+
+    .quotation-form button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
     </head>
 
     <body>
@@ -116,42 +126,29 @@
                 </li>
             </ul>
         </section>
-
-        <!-- User Box -->
+ <!-- User Box with Logout -->
   <div id="userBox" class="user-box">
     <img id="userPhoto" src="" alt="User Photo">
     <span id="userName"></span>
-        <button id="logoutBtn" style="margin-left:10px; padding:4px 8px; border-radius:4px; cursor:pointer;">
-    Logout
-  </button>
+    <button id="logoutBtn">Logout</button>
   </div>
 
-        <!-- Main Hero Section -->
-        <main class="heroMain">
-            <form class="quotation-form"
-                  id="quotationForm">
-                <h2>Quotation Request</h2>
-                <label for="name">Name:</label>
-                <input type="text"
-                       id="name"
-                       name="name"
-                       readonly>
+  <!-- Quotation Form -->
+  <main class="heroMain">
+    <form class="quotation-form" id="quotationForm">
+      <h2>Quotation Request</h2>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" readonly>
 
-                <label for="email">Email:</label>
-                <input type="email"
-                       id="email"
-                       name="email"
-                       readonly>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" readonly>
 
-                <label for="details">Project Details:</label>
-                <textarea id="details"
-                          name="details"
-                          rows="4"
-                          placeholder="Describe your project"></textarea>
+      <label for="details">Project Details:</label>
+      <textarea id="details" name="details" rows="4" placeholder="Describe your project"></textarea>
 
-                <button type="submit">Submit</button>
-            </form>
-        </main>
+      <button type="submit">Submit</button>
+    </form>
+  </main>
 
         <!-- Sticky Footer -->
         <footer class="footer">
@@ -256,51 +253,51 @@
             </div>
         </div>
 
+<script type="module">
+    import { signOut } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
-        <script type="module">
-           import { signOut } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
-            const userPhoto = document.getElementById("userPhoto");
-            const userName = document.getElementById("userName");
+    const userPhoto = document.getElementById("userPhoto");
+    const userName = document.getElementById("userName");
+    const logoutBtn = document.getElementById("logoutBtn");
 
-            const name = sessionStorage.getItem("userName");
-            const photo = sessionStorage.getItem("userPhoto");
-            const email = sessionStorage.getItem("userEmail"); // optional, if saved during login
-           
-            const auth = window.auth;
-            const logoutBtn = document.getElementById("logoutBtn");
-            
-            logoutBtn.addEventListener("click", async () => {
-              try {
-                await signOut(auth); // Firebase logout
-                sessionStorage.clear(); // Clear stored user info
-                window.location.href = "index.html"; // Redirect to homepage
-              } catch (error) {
-                console.error("Logout failed:", error);
-              }
-            });
+    const name = sessionStorage.getItem("userName");
+    const photo = sessionStorage.getItem("userPhoto");
+    const email = sessionStorage.getItem("userEmail");
 
+    const auth = window.auth;
 
-            if (!name || !photo) {
-                // Not logged in → redirect to index
-                window.location.href = "index.html";
-            } else {
-                // Populate user box
-                userPhoto.src = photo;
-                userName.textContent = name;
+    // Redirect if user is not logged in
+    if (!name || !photo) {
+      window.location.href = "index.html";
+    } else {
+      // Populate user box
+      userPhoto.src = photo;
+      userName.textContent = name;
 
-                // Auto-fill form
-                document.getElementById("name").value = name;
-                document.getElementById("email").value = email || ""; // optional
-            }
+      // Auto-fill form
+      document.getElementById("name").value = name;
+      document.getElementById("email").value = email || "";
+    }
 
-            // Handle form submission
-            const form = document.getElementById("quotationForm");
-            form.addEventListener("submit", (e) => {
-                e.preventDefault();
-                alert("Quotation submitted!");
-                // Here you can also push to Firebase Firestore or send via email
-            });
-        </script>
+    // Logout handler
+    logoutBtn.addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+        sessionStorage.clear();
+        window.location.href = "index.html";
+      } catch (error) {
+        console.error("Logout failed:", error);
+      }
+    });
+
+    // Handle form submission
+    const form = document.getElementById("quotationForm");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("Quotation submitted!");
+      // Optionally: push to Firebase Firestore or send via email
+    });
+  </script>
 
 
         <script>
@@ -340,5 +337,6 @@
     </body>
 
 </html>
+
 
 
