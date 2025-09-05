@@ -222,32 +222,21 @@
             src="firebase-login.js"></script>
 
     <script>
-      import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+      import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
-        // Use your already initialized auth
-        const provider = new GoogleAuthProvider();
-        const quoteBtn = document.querySelector(".btn");
+      const firebaseConfig = {
+        apiKey: "AIzaSyCTcS8HPQvSBDLyhmgZ1-SbRh6VTjMl1H0",
+        authDomain: "gamay-solarista.firebaseapp.com",
+        projectId: "gamay-solarista",
+        storageBucket: "gamay-solarista.appspot.com",
+        messagingSenderId: "84647601122",
+        appId: "1:84647601122:web:d5fb855a45516c8b0ccfbb"
+      };
 
-        quoteBtn.addEventListener("click", async (e) => {
-          e.preventDefault(); // Prevent default link behavior
-          try {
-            const result = await signInWithPopup(auth, provider);
-            const user = result.user;
-            console.log("Login success:", user.displayName);
-
-            // Optionally save user info for next page
-            sessionStorage.setItem("userName", user.displayName);
-            sessionStorage.setItem("userPhoto", user.photoURL);
-
-            // Redirect to quotationBillingFinal.html
-            window.location.href = "quotationBillingFinal.html";
-          } catch (error) {
-            console.error("Login failed:", error);
-            // Stay on current page
-            window.location.href = "index.html";
-          }
-        });
-
+      window.firebaseApp = initializeApp(firebaseConfig);
+      window.auth = getAuth(window.firebaseApp);
+      
       function setupModal(openBtnId, modalId, closeBtnId) {
         const modal = document.getElementById(modalId);
         const openBtn = document.getElementById(openBtnId);
