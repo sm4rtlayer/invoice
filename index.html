@@ -186,28 +186,24 @@
 
     <!-- Modal JS -->
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
-  import { 
-    getAuth, 
-    GoogleAuthProvider, 
-    signInWithPopup, 
-    signOut 
-  } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
-  // Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyCTcS8HPQvSBDLyhmgZ1-SbRh6VTjMl1H0",
-    authDomain: "gamay-solarista.firebaseapp.com",
-    projectId: "gamay-solarista",
-    storageBucket: "gamay-solarista.appspot.com",
-    messagingSenderId: "84647601122",
-    appId: "1:84647601122:web:d5fb855a45516c8b0ccfbb"
-  };
+// Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyCTcS8HPQvSBDLyhmgZ1-SbRh6VTjMl1H0",
+  authDomain: "gamay-solarista.firebaseapp.com",
+  projectId: "gamay-solarista",
+  storageBucket: "gamay-solarista.appspot.com",
+  messagingSenderId: "84647601122",
+  appId: "1:84647601122:web:d5fb855a45516c8b0ccfbb"
+};
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
- function showUser() {
+// Show user box
+function showUser() {
   const userBox = document.getElementById("userBox");
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -221,13 +217,10 @@
     `;
 
     const img = userBox.querySelector("img");
-
-    // Toggle logout button
     img.addEventListener("click", () => {
       userBox.classList.toggle("active");
     });
 
-    // Logout functionality
     document.getElementById("logoutBtn").addEventListener("click", () => {
       signOut(auth).then(() => {
         localStorage.removeItem("user");
@@ -240,71 +233,69 @@
   }
 }
 
-  // Save user & autofill form
-  function saveUser(user) {
-    localStorage.setItem("user", JSON.stringify({
-      name: user.displayName,
-      email: user.email,
-      photo: user.photoURL
-    }));
-    showUser();
-    autofillForm();
+// Save user and autofill
+function saveUser(user) {
+  localStorage.setItem("user", JSON.stringify({
+    name: user.displayName,
+    email: user.email,
+    photo: user.photoURL
+  }));
+  showUser();
+  autofillForm();
+}
+
+// Autofill form inputs if they exist
+function autofillForm() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (user) {
+    const nameInput = document.getElementById("customerName");
+    const emailInput = document.getElementById("customerEmail");
+    if (nameInput) nameInput.value = user.name || "";
+    if (emailInput) emailInput.value = user.email || "";
   }
+}
 
-  function autofillForm() {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-      const nameInput = document.getElementById("customerName");
-      const emailInput = document.getElementById("customerEmail");
-      if (nameInput) nameInput.value = user.name || "";
-      if (emailInput) emailInput.value = user.email || "";
-    }
-  }
+// Modal setup
+function setupModal(openBtnId, modalId, closeBtnId) {
+  const modal = document.getElementById(modalId);
+  const openBtn = document.getElementById(openBtnId);
+  const closeBtn = document.getElementById(closeBtnId);
+  if (!modal || !openBtn || !closeBtn) return;
 
-  // Modal utility
-  function setupModal(openBtnId, modalId, closeBtnId) {
-    const modal = document.getElementById(modalId);
-    const openBtn = document.getElementById(openBtnId);
-    const closeBtn = document.getElementById(closeBtnId);
-    if (!modal || !openBtn || !closeBtn) return;
+  openBtn.addEventListener("click", () => modal.classList.add("show"));
+  closeBtn.addEventListener("click", () => modal.classList.remove("show"));
+  window.addEventListener("click", e => {
+    if (e.target === modal) modal.classList.remove("show");
+  });
+}
 
-    openBtn.addEventListener("click", () => modal.classList.add("show"));
-    closeBtn.addEventListener("click", () => modal.classList.remove("show"));
-    window.addEventListener("click", (e) => {
-      if (e.target === modal) modal.classList.remove("show");
+// DOM ready
+window.addEventListener("DOMContentLoaded", () => {
+  showUser();
+  autofillForm();
+
+  // Google login
+  const googleBtn = document.getElementById("googleLoginBtn");
+  if (googleBtn) {
+    googleBtn.addEventListener("click", async () => {
+      const provider = new GoogleAuthProvider();
+      try {
+        const result = await signInWithPopup(auth, provider);
+        saveUser(result.user);
+        document.getElementById("loginModal").classList.remove("show");
+        window.location.href = "dashboard.html"; // redirect after login
+      } catch (err) {
+        console.error(err);
+      }
     });
   }
+});
 
-  // Run after DOM is ready
-  window.addEventListener("DOMContentLoaded", () => {
-    showUser();
-    autofillForm();
-
-    // Google login
-    const googleBtn = document.getElementById("googleLoginBtn");
-    if (googleBtn) {
-      googleBtn.addEventListener("click", async () => {
-        const provider = new GoogleAuthProvider();
-        try {
-          const result = await signInWithPopup(auth, provider);
-          saveUser(result.user);
-          const modal = document.getElementById("loginModal");
-          if (modal) modal.classList.remove("show");
-        } catch (err) {
-          console.error(err);
-        }
-      });
-    }
-
-    // Initialize other modals if needed
-    setupModal("openAbout", "aboutModal", "closeAbout");
-    setupModal("openServices", "servicesModal", "closeServices");
-    setupModal("openContact", "contactModal", "closeContact");
-  });
 </script>
 
   </body>
 </html>
+
 
 
 
