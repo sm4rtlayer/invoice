@@ -31,6 +31,51 @@
     text-align: justify; /* paragraph justification */
 }
 
+.modal-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.card-icon {
+  font-size: 1.8rem;
+  margin-right: 12px;
+}
+
+.card-info .title {
+  display: block;
+  font-weight: bold;
+  color: #222;
+}
+
+.card-info p {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
 .modal-content h2 {
     font-size: 1.8rem;
     font-weight: 700;
