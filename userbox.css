@@ -10,6 +10,14 @@
   max-width: 250px;
 }
 
+/* Center user-box on small screens */
+@media (max-width: 480px) {
+  .user-box {
+    margin: 0 auto;          /* center horizontally */
+    justify-content: center;  /* center contents inside */
+  }
+}
+
 /* User photo */
 .user-box img#userPhoto {
   width: 40px;
@@ -45,3 +53,4 @@
 .user-box button#logoutBtn:hover {
   background-color: #c0392b;
 }
+
