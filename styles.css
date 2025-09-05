@@ -155,7 +155,6 @@ body {
 .footer {
   background: #bcb8b8;
   color: #000;
-  text-align: center;
   min-height: 60px;
 
   position: fixed;
@@ -166,11 +165,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 main {
-  padding-bottom: 60px; /* keeps content above the footer */
+  padding-bottom: 60px; /* keep content above footer */
 }
+
+
 
 
 
