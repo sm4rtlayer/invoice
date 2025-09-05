@@ -218,10 +218,8 @@
       </div>
     </div>
 
-    <script type="module"
-            src="login.js"></script>
-
-  <script type="module">
+    !-- 1️⃣ Firebase initialization (must be first) -->
+    <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
       import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
@@ -234,9 +232,20 @@
         appId: "1:84647601122:web:d5fb855a45516c8b0ccfbb"
       };
 
-      window.firebaseApp = initializeApp(firebaseConfig);
-      window.auth = getAuth(window.firebaseApp);
-      
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      // Make auth globally accessible for login.js
+      window.auth = auth;
+    </script>
+
+    <!-- 2️⃣ Login script -->
+    <script type="module"
+            src="login.js"></script>
+
+
+    <script>
       function setupModal(openBtnId, modalId, closeBtnId) {
         const modal = document.getElementById(modalId);
         const openBtn = document.getElementById(openBtnId);
@@ -273,5 +282,3 @@
   </body>
 
 </html>
-
-
