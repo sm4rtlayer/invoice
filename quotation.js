@@ -61,7 +61,7 @@ document.querySelectorAll(".card").forEach(card => {
     // Update billing with Peso
     const estimatedBilling = document.getElementById("estimatedBilling");
     estimatedBilling.textContent =
-      `Selected: ${selectedPackage} | Capacity: ${capacity} kWh | Estimated Cost: ₱${price.toLocaleString()}`;
+      `Selected: ${selectedPackage} | Capacity: ${capacity} W | Estimated Cost: ₱${price.toLocaleString()}`;
 
     // Close modal
     const modalId = card.closest(".modalQuote").id;
@@ -78,4 +78,5 @@ document.querySelectorAll(".card").forEach(card => {
     alert("Quotation request submitted successfully!");
   });
 });
+
 
