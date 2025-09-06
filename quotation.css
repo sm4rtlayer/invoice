@@ -82,11 +82,11 @@
   color: #222;
 }
 
-/* Quotation Modals */
+/* Base modal container */
 .modalQuote {
   display: none;
   position: fixed;
-  z-index: 100;            /* above everything */
+  z-index: 1000; /* stay on top */
   left: 0;
   top: 0;
   width: 100%;
@@ -97,11 +97,13 @@
   transition: opacity 0.3s ease;
 }
 
+/* Show modal */
 .modalQuote.show {
   display: block;
   opacity: 1;
 }
 
+/* Modal content */
 .modalQuote-content {
   background-color: #fff;
   margin: 10% auto;
@@ -113,6 +115,7 @@
   transition: transform 0.3s ease;
 }
 
+/* Slide down when showing */
 .modalQuote.show .modalQuote-content {
   transform: translateY(0);
 }
@@ -174,3 +177,4 @@
     width: 100%;
   }
 }
+
