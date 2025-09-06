@@ -168,24 +168,19 @@
   box-sizing: border-box;
 }
 
-/* Hide price (assumed as second <p>) */
-.card p:nth-of-type(2) {
-  display: none;
+#onGridModal .card h4,
+#onGridModal .card p,
+#onGridModal .card button {
+  display: none; /* hides text and buttons */
 }
 
-/* Hide any <span> inside cards */
-.card span {
-  display: none;
-}
-.card img {
+#onGridModal .card img {
   width: 100%;
-  border-radius: 5px;
+  height: auto;
+  display: block;
+  border-radius: 6px; /* optional, nicer corners */
 }
 
-.card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
 
 
 /* Hide the Select button */
@@ -282,6 +277,7 @@
   font-size: 13px;
   color: #333;
 }
+
 
 
 
