@@ -308,53 +308,68 @@
             </div>
         </div>
 
-        <script type="module">
-            import { signOut } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+      <script type="module">
+  import { signOut } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
-            const userPhoto = document.getElementById("userPhoto");
-            const userName = document.getElementById("userName");
-            const logoutBtn = document.getElementById("logoutBtn");
+  const userPhoto = document.getElementById("userPhoto");
+  const userName = document.getElementById("userName");
+  const logoutBtn = document.getElementById("logoutBtn");
 
-            const name = sessionStorage.getItem("userName");
-            const photo = sessionStorage.getItem("userPhoto");
-            const email = sessionStorage.getItem("userEmail");
+  const name = sessionStorage.getItem("userName");
+  const photo = sessionStorage.getItem("userPhoto");
+  const email = sessionStorage.getItem("userEmail");
 
-            const auth = window.auth;
+  const auth = window.auth;
 
-            // Redirect if user is not logged in
-            if (!name || !photo) {
-                window.location.href = "index.html";
-            } else {
-                // Populate user box
-                userPhoto.src = photo;
-                userName.textContent = name;
+  // Redirect if user is not logged in
+  if (!name || !email || !photo) {
+    window.location.href = "index.html";
+  } else {
+    // Populate user box
+    if (userPhoto) userPhoto.src = photo;
+    if (userName) userName.textContent = name;
 
-                // Auto-fill form
-                document.getElementById("name").value = name;
-                document.getElementById("email").value = email || "";
-            }
+    // Autofill BOTH types of forms if present
+    const nameField1 = document.getElementById("name");
+    const emailField1 = document.getElementById("email");
+    if (nameField1 && emailField1) {
+      nameField1.value = name;
+      emailField1.value = email;
+    }
 
-            // Logout handler
-            logoutBtn.addEventListener("click", async () => {
-                try {
-                    await signOut(auth);        // Sign out from Firebase
-                    sessionStorage.clear();      // Clear stored user info
-                    window.location.href = "index.html"; // Redirect to homepage
-                } catch (error) {
-                    console.error("Logout failed:", error);
-                    // Redirect anyway if signOut fails
-                    window.location.href = "index.html";
-                }
-            });
+    const nameField2 = document.getElementById("custName");
+    const emailField2 = document.getElementById("custEmail");
+    if (nameField2 && emailField2) {
+      nameField2.value = name;
+      emailField2.value = email;
+    }
+  }
 
-            // Handle form submission
-            const form = document.getElementById("quotationForm");
-            form.addEventListener("submit", (e) => {
-                e.preventDefault();
-                alert("Quotation submitted!");
-                // Optionally: push to Firebase Firestore or send via email
-            });
-        </script>
+  // Logout handler
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", async () => {
+      try {
+        await signOut(auth);        // Firebase logout
+        sessionStorage.clear();     // Clear stored user info
+        window.location.href = "index.html"; // Always redirect
+      } catch (error) {
+        console.error("Logout failed:", error);
+        window.location.href = "index.html"; // Redirect anyway
+      }
+    });
+  }
+
+  // Handle form submission
+  const form = document.getElementById("quotationForm");
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("Quotation submitted!");
+      // 🔥 Optionally save to Firestore or send to backend here
+    });
+  }
+</script>
+
 
 
         <script>
@@ -394,6 +409,7 @@
     </body>
 
 </html>
+
 
 
 
