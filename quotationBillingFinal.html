@@ -308,64 +308,59 @@
             </div>
         </div>
 
-      <script type="module">
-  import { signOut } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+         <script type="module">
+  import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
+  // ✅ Initialize Firebase Auth
+  const auth = getAuth();
+
+  // DOM references
   const userPhoto = document.getElementById("userPhoto");
   const userName = document.getElementById("userName");
   const logoutBtn = document.getElementById("logoutBtn");
+  const form = document.getElementById("quotationForm");
 
+  // Session values
   const name = sessionStorage.getItem("userName");
   const photo = sessionStorage.getItem("userPhoto");
   const email = sessionStorage.getItem("userEmail");
 
-  const auth = window.auth;
-
-  // Redirect if user is not logged in
+  // 🔒 Redirect if not logged in
   if (!name || !email || !photo) {
     window.location.href = "index.html";
   } else {
-    // Populate user box
+    // ✅ Populate user info
     if (userPhoto) userPhoto.src = photo;
     if (userName) userName.textContent = name;
 
-    // Autofill BOTH types of forms if present
-    const nameField1 = document.getElementById("name");
-    const emailField1 = document.getElementById("email");
-    if (nameField1 && emailField1) {
-      nameField1.value = name;
-      emailField1.value = email;
-    }
+    // ✅ Autofill forms (handles both possible IDs)
+    const nameField = document.getElementById("name") || document.getElementById("custName");
+    const emailField = document.getElementById("email") || document.getElementById("custEmail");
 
-    const nameField2 = document.getElementById("custName");
-    const emailField2 = document.getElementById("custEmail");
-    if (nameField2 && emailField2) {
-      nameField2.value = name;
-      emailField2.value = email;
-    }
+    if (nameField) nameField.value = name;
+    if (emailField) emailField.value = email;
   }
 
-  // Logout handler
+  // 🚪 Logout handler
   if (logoutBtn) {
     logoutBtn.addEventListener("click", async () => {
       try {
-        await signOut(auth);        // Firebase logout
-        sessionStorage.clear();     // Clear stored user info
-        window.location.href = "index.html"; // Always redirect
+        await signOut(auth);
       } catch (error) {
         console.error("Logout failed:", error);
-        window.location.href = "index.html"; // Redirect anyway
+      } finally {
+        sessionStorage.clear();
+        window.location.href = "index.html";
       }
     });
   }
 
-  // Handle form submission
-  const form = document.getElementById("quotationForm");
+  // 📝 Form submission
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       alert("Quotation submitted!");
-      // 🔥 Optionally save to Firestore or send to backend here
+      // 🔥 Optionally save to Firestore or backend
     });
   }
 </script>
@@ -409,6 +404,7 @@
     </body>
 
 </html>
+
 
 
 
