@@ -80,14 +80,46 @@ function updateForecast() {
   // Update forecast billing
   const estimatedBilling = document.getElementById("estimatedBilling");
   estimatedBilling.innerHTML =
-    `<div>
-      <p><strong>Selected:</strong> ${selectedPackage}</p>
-      <p><strong>Capacity:</strong> ${capacityKW.toFixed(2)} kW</p>
-      <p><strong>Estimated Cost:</strong> ${formatCurrency(price)}</p>
-      <p><strong>Estimated Production:</strong> ${monthlyProduction.toFixed(1)} kWh/month</p>
-      <p style="color:green;"><strong>Estimated Savings per Month:</strong> ${formatCurrency(monthlySavings)}</p>
-      <p style="color:#007BFF;"><strong>Payback Period:</strong> ${paybackMonths.toFixed(1)} months</p>
-    </div>`;
+   <div class="quotation-box">
+    <div class="quotation-header">
+      <img src="images/logo.png" alt="Company Logo" class="quotation-logo" />
+      <h3>Gamay Solarista</h3>
+      <p class="tagline">Powering Tomorrow, Today ⚡</p>
+    </div>
+
+    <h4>📋 Quotation Summary</h4>
+    <table class="quotation-table">
+      <tr>
+        <td><strong>Selected Package</strong></td>
+        <td>${selectedPackage}</td>
+      </tr>
+      <tr>
+        <td><strong>Capacity</strong></td>
+        <td>${capacityKW.toFixed(2)} kW</td>
+      </tr>
+      <tr>
+        <td><strong>Estimated Cost</strong></td>
+        <td>${formatCurrency(price)}</td>
+      </tr>
+      <tr>
+        <td><strong>Estimated Production</strong></td>
+        <td>${monthlyProduction.toFixed(1)} kWh / month</td>
+      </tr>
+      <tr>
+        <td><strong style="color:green;">Estimated Savings</strong></td>
+        <td style="color:green;">${formatCurrency(monthlySavings)} / month</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#007BFF;">Payback Period</strong></td>
+        <td style="color:#007BFF;">${paybackMonths.toFixed(1)} months</td>
+      </tr>
+    </table>
+
+    <div class="quotation-footer">
+      <p class="quotation-note">⚠ This is an estimated forecast. Actual savings may vary depending on usage, weather, and installation.</p>
+      <p class="quotation-contact">📞 Contact us: info@gamaysolarista.com | +63 912 345 6789</p>
+    </div>
+  </div>`;
 }
 
 // Handle package selection
@@ -122,6 +154,7 @@ document.getElementById("sunHours").addEventListener("input", updateForecast);
     alert("Quotation request submitted successfully!");
   });
 });
+
 
 
 
