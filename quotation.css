@@ -1,50 +1,92 @@
-/* Form styling */
+/* Container */
 .heroQuotation {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
+  position: relative; /* ensures elements position normally */
+}
+
+/* Headings */
+.quotation-form h2 {
+  font-size: 24px;
+  color: #222;
 }
 
 .quotation-form h3 {
   margin-top: 20px;
   color: #333;
+  font-size: 18px;
 }
 
+/* Labels */
 .quotation-form label {
   display: block;
   margin-top: 10px;
+  font-weight: 500;
 }
 
+/* Inputs & Textarea */
 .quotation-form input,
-.quotation-form textarea,
-.quotation-form button {
+.quotation-form textarea {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
   box-sizing: border-box;
   border-radius: 5px;
   border: 1px solid #ccc;
+  font-size: 14px;
 }
 
+/* Buttons */
 .quotation-form button {
+  display: block;          /* ensure visible */
+  width: 100%;             /* full width */
   margin-top: 15px;
+  padding: 10px;
   background-color: #007BFF;
   color: white;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
   transition: background-color 0.3s;
+  z-index: 1;
 }
 
 .quotation-form button:hover {
   background-color: #0056b3;
 }
 
-/* Modal styling with smooth animation */
-.modal {
+/* Package Selection Buttons */
+.package-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.package-buttons button {
+  width: 48%;
+  background-color: #17a2b8;
+}
+
+.package-buttons button:hover {
+  background-color: #117a8b;
+}
+
+/* Forecast Billing Text */
+#estimatedBilling {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #222;
+}
+
+/* Quotation Modals */
+.modalQuote {
   display: none;
   position: fixed;
-  z-index: 10;
+  z-index: 100;            /* above everything */
   left: 0;
   top: 0;
   width: 100%;
@@ -55,36 +97,80 @@
   transition: opacity 0.3s ease;
 }
 
-.modal.show {
+.modalQuote.show {
   display: block;
   opacity: 1;
 }
 
-.modal-content {
+.modalQuote-content {
   background-color: #fff;
-  margin: 15% auto;
+  margin: 10% auto;
   padding: 20px;
-  max-width: 300px;
+  max-width: 500px;
   border-radius: 10px;
   text-align: center;
   transform: translateY(-30px);
   transition: transform 0.3s ease;
 }
 
-.modal.show .modal-content {
+.modalQuote.show .modalQuote-content {
   transform: translateY(0);
 }
 
-.modal-content button {
-  margin: 10px 0;
-  width: 80%;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.close {
+/* Close button */
+.modalQuote-content .close {
   float: right;
   font-size: 24px;
   cursor: pointer;
+}
+
+/* Package Cards */
+.package-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+  justify-content: space-between;
+}
+
+.card {
+  width: 48%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.selectPackageBtn {
+  margin-top: 10px;
+  padding: 8px;
+  width: 100%;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.selectPackageBtn:hover {
+  background-color: #218838;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .package-buttons {
+    flex-direction: column;
+  }
+  
+  .package-buttons button,
+  .card {
+    width: 100%;
+  }
 }
