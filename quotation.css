@@ -63,13 +63,22 @@
   display: none;
 }
 
-.package-buttons button {
+.package-buttons buttonOngrid {
   width: 48%;
-  background-color: #17a2b8;
+  background-color: #b81717;
 }
 
-.package-buttons button:hover {
-  background-color: #117a8b;
+.package-buttons buttonOffgrid {
+  width: 48%;
+  background-color: #00ff1a;
+}
+
+.package-buttons buttonOffgrid:hover {
+  background-color: #b81717;
+}
+
+.package-buttons buttonOngrid:hover {
+  background-color: #00ff1a;
 }
 
 /* Forecast Billing Text */
@@ -180,5 +189,4 @@
     width: 100%;
   }
 }
-
 
