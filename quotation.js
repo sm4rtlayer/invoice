@@ -122,16 +122,15 @@ document.addEventListener("DOMContentLoaded", () => {
         </table>
 
         <h4>👤 Customer Information</h4>
-        <form id="quotationForm">
-          <label for="custName">Full Name</label>
-          <input type="text" id="custName" name="custName" required placeholder="Enter your name" />
-
-          <label for="custEmail">Email Address</label>
-          <input type="email" id="custEmail" name="custEmail" required placeholder="Enter your email" />
-
-          <button type="submit" class="submit-btn">Request Quotation</button>
-        </form>
-
+          <form id="quotationForm">
+            <label for="custName">Full Name</label>
+            <input type="text" id="custName" name="custName" required placeholder="Enter your name" />
+          
+            <label for="custEmail">Email Address</label>
+            <input type="email" id="custEmail" name="custEmail" required placeholder="Enter your email" />
+          
+            <button type="submit" class="submit-btn">Request Quotation</button>
+          </form>
         <div class="quotation-footer">
           <p class="quotation-note">⚠ This is an estimated forecast. Actual savings may vary depending on usage, weather, and installation.</p>
           <p class="quotation-contact">📞 Contact us: info@gamaysolarista.com | +63 912 345 6789</p>
@@ -177,3 +176,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
