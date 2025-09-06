@@ -121,20 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </tr>
         </table>
 
-        <h4>👤 Customer Information</h4>
-          <form id="quotationForm">
-                    <label for="name">Name:</label>
-                <input type="text"
-                       id="name"
-                       name="name"
-                       readonly>
 
-                <label for="email">Email:</label>
-                <input type="email"
-                       id="email"
-                       name="email"
-                       readonly>
-          </form>
         <div class="quotation-footer">
           <p class="quotation-note">⚠ This is an estimated forecast. Actual savings may vary depending on usage, weather, and installation.</p>
           <p class="quotation-contact">📞 Contact us: info@gamaysolarista.com | +63 912 345 6789</p>
@@ -180,5 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
