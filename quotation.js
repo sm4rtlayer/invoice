@@ -74,7 +74,7 @@ function updateForecast() {
   estimatedBilling.innerHTML =
     `<div>
       <p><strong>Selected:</strong> ${selectedPackage}</p>
-      <p><strong>Capacity:</strong> ${capacity} kWh</p>
+      <p><strong>Capacity:</strong> ${capacity} W </p>
       <p><strong>Estimated Cost:</strong> ${formatCurrency(price)}</p>
       <p style="color:green;"><strong>Estimated Savings per Month:</strong> ${formatCurrency(monthlySavings)}</p>
       <p style="color:#007BFF;"><strong>Payback Period:</strong> ${paybackMonths.toFixed(1)} months</p>
@@ -115,6 +115,7 @@ document.getElementById("electricityRate").addEventListener("input", updateForec
     alert("Quotation request submitted successfully!");
   });
 });
+
 
 
 
