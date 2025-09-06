@@ -308,59 +308,72 @@
             </div>
         </div>
 
-         <script type="module">
+        <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
   import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
-  // ✅ Initialize Firebase Auth
-  const auth = getAuth();
+  // ✅ Your Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyCTcS8HPQvSBDLyhmgZ1-SbRh6VTjMl1H0",
+    authDomain: "gamay-solarista.firebaseapp.com",
+    projectId: "gamay-solarista",
+    storageBucket: "gamay-solarista.appspot.com",
+    messagingSenderId: "84647601122",
+    appId: "1:84647601122:web:d5fb855a45516c8b0ccfbb"
+  };
 
-  // DOM references
+  // ✅ Initialize Firebase (needed for every page)
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // --- rest of your code ---
   const userPhoto = document.getElementById("userPhoto");
   const userName = document.getElementById("userName");
   const logoutBtn = document.getElementById("logoutBtn");
-  const form = document.getElementById("quotationForm");
 
-  // Session values
   const name = sessionStorage.getItem("userName");
   const photo = sessionStorage.getItem("userPhoto");
   const email = sessionStorage.getItem("userEmail");
 
-  // 🔒 Redirect if not logged in
   if (!name || !email || !photo) {
     window.location.href = "index.html";
   } else {
-    // ✅ Populate user info
     if (userPhoto) userPhoto.src = photo;
     if (userName) userName.textContent = name;
 
-    // ✅ Autofill forms (handles both possible IDs)
-    const nameField = document.getElementById("name") || document.getElementById("custName");
-    const emailField = document.getElementById("email") || document.getElementById("custEmail");
+    const nameField1 = document.getElementById("name");
+    const emailField1 = document.getElementById("email");
+    if (nameField1 && emailField1) {
+      nameField1.value = name;
+      emailField1.value = email;
+    }
 
-    if (nameField) nameField.value = name;
-    if (emailField) emailField.value = email;
+    const nameField2 = document.getElementById("custName");
+    const emailField2 = document.getElementById("custEmail");
+    if (nameField2 && emailField2) {
+      nameField2.value = name;
+      emailField2.value = email;
+    }
   }
 
-  // 🚪 Logout handler
   if (logoutBtn) {
     logoutBtn.addEventListener("click", async () => {
       try {
         await signOut(auth);
+        sessionStorage.clear();
+        window.location.href = "index.html";
       } catch (error) {
         console.error("Logout failed:", error);
-      } finally {
-        sessionStorage.clear();
         window.location.href = "index.html";
       }
     });
   }
 
-  // 📝 Form submission
+  const form = document.getElementById("quotationForm");
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       alert("Quotation submitted!");
-      // 🔥 Optionally save to Firestore or backend
     });
   }
 </script>
@@ -404,6 +417,7 @@
     </body>
 
 </html>
+
 
 
 
