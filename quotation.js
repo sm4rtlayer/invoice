@@ -47,27 +47,28 @@ document.addEventListener("DOMContentLoaded", () => {
   // ========================
   // Package selection logic
   // ========================
- document.querySelectorAll(".selectPackageBtn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const selectedPackage = btn.getAttribute("data-package");
-    const card = btn.closest(".card");
-    const capacityText = card.querySelector("p:nth-of-type(1)").textContent; // e.g. "Capacity: 5 kWh"
-    const priceText = card.querySelector("p:nth-of-type(2)").textContent;   // e.g. "Price: $3,500"
+// Handle package selection by clicking the entire card
+document.querySelectorAll(".card").forEach(card => {
+  card.addEventListener("click", () => {
+    const selectedPackage = card.querySelector("h4").textContent;
+    const capacityText = card.querySelector("p:nth-of-type(1)").textContent;
+    const priceText = card.querySelector("p:nth-of-type(2)").textContent;
 
-    // Extract numbers safely
+    // Extract numbers
     const capacity = parseFloat(capacityText.replace(/[^0-9.]/g, ""));
     const price = parseFloat(priceText.replace(/[^0-9.]/g, ""));
 
-    // Update billing dynamically with Peso symbol
+    // Update billing with Peso
     const estimatedBilling = document.getElementById("estimatedBilling");
-    estimatedBilling.textContent = 
+    estimatedBilling.textContent =
       `Selected: ${selectedPackage} | Capacity: ${capacity} kWh | Estimated Cost: ₱${price.toLocaleString()}`;
 
     // Close modal
-    const modalId = btn.closest(".modalQuote").id;
+    const modalId = card.closest(".modalQuote").id;
     document.getElementById(modalId).classList.remove("show");
   });
 });
+
   // ========================
   // Form submission (demo)
   // ========================
@@ -77,3 +78,4 @@ document.addEventListener("DOMContentLoaded", () => {
     alert("Quotation request submitted successfully!");
   });
 });
+
