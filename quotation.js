@@ -51,8 +51,13 @@ function formatCurrency(amount) {
   return "₱" + amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
+// Update forecast billing (only if a package was selected first)
 function updateForecast() {
-  if (!lastSelected) return; // do nothing if no package selected yet
+  if (!lastSelected) {
+    document.getElementById("estimatedBilling").innerHTML =
+      `<p style="color:red;">⚠ Please select a package first.</p>`;
+    return;
+  }
 
   const { selectedPackage, capacity, price } = lastSelected;
 
@@ -86,10 +91,10 @@ document.querySelectorAll(".card").forEach(card => {
     const capacity = parseFloat(capacityText.replace(/[^0-9.]/g, ""));
     const price = parseFloat(priceText.replace(/[^0-9.]/g, ""));
 
-    // Save for later use
+    // Save selected package for later use
     lastSelected = { selectedPackage, capacity, price };
 
-    // Update forecast
+    // Update forecast immediately with current electricity rate
     updateForecast();
 
     // Close modal
@@ -98,11 +103,9 @@ document.querySelectorAll(".card").forEach(card => {
   });
 });
 
-// Auto-update when electricity rate input changes
+// Auto-update forecast only after package selection
 document.getElementById("electricityRate").addEventListener("input", updateForecast);
-
-
-
+  
   // ========================
   // Form submission (demo)
   // ========================
@@ -112,6 +115,7 @@ document.getElementById("electricityRate").addEventListener("input", updateForec
     alert("Quotation request submitted successfully!");
   });
 });
+
 
 
 
