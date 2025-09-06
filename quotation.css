@@ -58,30 +58,44 @@
   background-color: #0056b3;
 }
 
-/* Package Selection Buttons */
 .package-buttons {
-    display: flex;
+  display: flex;
   justify-content: space-between;
   gap: 10px;
   margin-bottom: 15px;
 }
 
-.package-buttons buttonOngrid {
-  width: 48%;
-  background-color: #b81717;
+.package-buttons button {
+  flex: 1; /* make them equal width */
+  padding: 10px;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-.package-buttons buttonOffgrid {
-  width: 48%;
-  background-color: #00ff1a;
+.package-buttons button:hover {
+  background-color: #117a8b;
+  transform: translateY(-2px);
 }
 
-.package-buttons buttonOffgrid:hover {
-  background-color: #b81717;
+.package-buttons button:active {
+  transform: translateY(0);
 }
 
-.package-buttons buttonOngrid:hover {
-  background-color: #00ff1a;
+/* Responsive - stack vertically on mobile */
+@media (max-width: 480px) {
+  .package-buttons {
+    flex-direction: column;
+  }
+
+  .package-buttons button {
+    width: 100%;
+  }
 }
 
 /* Forecast Billing Text */
@@ -192,5 +206,6 @@
     width: 100%;
   }
 }
+
 
 
