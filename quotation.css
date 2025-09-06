@@ -176,8 +176,14 @@
 }
 
 /* Hide details and buttons inside On-Grid cards */
+#onGridModal .card h3,
+#onGridModal .card h4,
 #onGridModal .card p,
 #onGridModal .card button,
+#offGridModal .card h3,
+#offGridModal .card h4,
+#offGridModal .card p,
+#offGridModal .card button,
 .selectPackageBtn {
   display: none;
 }
@@ -257,4 +263,5 @@
   font-size: 13px;
   color: #333;
 }
+
 
