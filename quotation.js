@@ -54,8 +54,12 @@ document.querySelectorAll(".card").forEach(card => {
     const capacity = parseFloat(capacityText.replace(/[^0-9.]/g, ""));
     const price = parseFloat(priceText.replace(/[^0-9.]/g, ""));
 
-    // ⚡ Calculate estimated monthly savings using CONFIG
-    const monthlySavings = capacity * CONFIG.electricityRate * CONFIG.daysPerMonth;
+    // ⚡ Get electricity rate dynamically from input
+    const electricityRate = parseFloat(document.getElementById("electricityRate").value) || 10;
+    const daysPerMonth = 30;
+
+    // ⚡ Calculate estimated monthly savings
+    const monthlySavings = capacity * electricityRate * daysPerMonth;
 
     // Payback period
     const paybackMonths = monthlySavings > 0 ? (price / monthlySavings) : 0;
@@ -77,7 +81,6 @@ document.querySelectorAll(".card").forEach(card => {
   });
 });
 
-});
 
   // ========================
   // Form submission (demo)
@@ -88,6 +91,7 @@ document.querySelectorAll(".card").forEach(card => {
     alert("Quotation request submitted successfully!");
   });
 });
+
 
 
 
