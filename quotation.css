@@ -168,7 +168,6 @@
   box-sizing: border-box;
 }
 
-#onGridModal .card h4,
 #onGridModal .card p,
 #onGridModal .card button {
   display: none; /* hides text and buttons */
@@ -277,6 +276,7 @@
   font-size: 13px;
   color: #333;
 }
+
 
 
 
