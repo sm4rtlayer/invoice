@@ -1,13 +1,13 @@
-/* Container */
+/* ===============================
+   Quotation Form & Buttons
+================================= */
 .heroQuotation {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
-  position: relative; /* ensures elements position normally */
 }
 
-/* Headings */
 .quotation-form h2 {
   font-size: 24px;
   color: #222;
@@ -15,65 +15,60 @@
 
 .quotation-form h3 {
   margin-top: 20px;
-  color: #333;
   font-size: 18px;
+  color: #333;
 }
 
-/* Labels */
 .quotation-form label {
   display: block;
   margin-top: 10px;
   font-weight: 500;
 }
 
-/* Inputs & Textarea */
 .quotation-form input,
 .quotation-form textarea {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
-  box-sizing: border-box;
-  border-radius: 5px;
   border: 1px solid #ccc;
+  border-radius: 5px;
   font-size: 14px;
+  box-sizing: border-box;
 }
 
-/* Buttons */
 .quotation-form button {
-  display: block;          /* ensure visible */
-  width: 100%;             /* full width */
+  width: 100%;
   margin-top: 15px;
   padding: 10px;
-  background-color: #007BFF;
-  color: white;
+  font-size: 16px;
   border: none;
   border-radius: 5px;
+  color: #fff;
+  background-color: #007BFF;
   cursor: pointer;
-  font-size: 16px;
   transition: background-color 0.3s;
-  z-index: 1;
 }
 
 .quotation-form button:hover {
   background-color: #0056b3;
 }
 
+/* Package selection buttons */
 .package-buttons {
   display: flex;
-  justify-content: space-between;
   gap: 10px;
   margin-bottom: 15px;
 }
 
 .package-buttons button {
-  flex: 1; /* make them equal width */
+  flex: 1;
   padding: 10px;
-  background-color: #17a2b8;
-  color: white;
-  border: none;
-  border-radius: 6px;
   font-size: 14px;
   font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  background-color: #17a2b8;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
 }
@@ -87,48 +82,44 @@
   transform: translateY(0);
 }
 
-/* Responsive - stack vertically on mobile */
-@media (max-width: 480px) {
-  .package-buttons {
-    flex-direction: column;
-  }
-
-  .package-buttons button {
-    width: 100%;
-  }
-}
-
-/* Forecast Billing Text */
 #estimatedBilling {
   margin-top: 10px;
   font-weight: bold;
   color: #222;
 }
 
-/* Base modal container */
+/* Responsive: stack buttons on mobile */
+@media (max-width: 480px) {
+  .package-buttons {
+    flex-direction: column;
+  }
+  .package-buttons button {
+    width: 100%;
+  }
+}
+
+/* ===============================
+   Modal Styles
+================================= */
 .modalQuote {
   display: none;
   position: fixed;
-  z-index: 1000; /* stay on top */
-  left: 0;
-  top: 0;
+  z-index: 1000;
+  inset: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.5);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-/* Show modal */
 .modalQuote.show {
   display: block;
   opacity: 1;
 }
 
-/* Modal content */
 .modalQuote-content {
-  background-color: #fff;
+  background: #fff;
   margin: 10% auto;
   padding: 20px;
   max-width: 500px;
@@ -138,19 +129,19 @@
   transition: transform 0.3s ease;
 }
 
-/* Slide down when showing */
 .modalQuote.show .modalQuote-content {
   transform: translateY(0);
 }
 
-/* Close button */
 .modalQuote-content .close {
   float: right;
   font-size: 24px;
   cursor: pointer;
 }
 
-/* Package Cards */
+/* ===============================
+   Package Cards
+================================= */
 .package-cards {
   display: flex;
   flex-wrap: wrap;
@@ -159,12 +150,6 @@
   justify-content: space-between;
 }
 
-.package-cards .card img {
-  width: 100%;        /* fill the card width */
-  height: 200px;      /* fixed height */
-  object-fit: cover;  /* crop nicely instead of stretching */
-  border-radius: 6px; /* optional, rounded corners */
-}
 .card {
   width: 48%;
   border: 1px solid #ccc;
@@ -172,29 +157,6 @@
   padding: 10px;
   text-align: center;
   box-sizing: border-box;
-}
-
-#onGridModal .card p,
-#onGridModal .card button {
-  display: none; /* hides text and buttons */
-}
-
-#onGridModal .card img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 6px; /* optional, nicer corners */
-}
-
-
-
-/* Hide the Select button */
-.selectPackageBtn {
-  display: none;
-}
-
-/* Make the whole card look clickable */
-.card {
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -204,24 +166,37 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* Responsive */
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+/* Hide details and buttons inside On-Grid cards */
+#onGridModal .card p,
+#onGridModal .card button,
+.selectPackageBtn {
+  display: none;
+}
+
+/* Responsive: single column cards */
 @media (max-width: 480px) {
-  .package-buttons {
-    flex-direction: column;
-  }
-  
-  .package-buttons button,
   .card {
     width: 100%;
   }
 }
 
+/* ===============================
+   Quotation Box
+================================= */
 .quotation-box {
+  margin-top: 20px;
+  padding: 20px;
   border: 1px solid #ddd;
   border-radius: 12px;
-  padding: 20px;
   background: #fff;
-  margin-top: 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   font-family: Arial, sans-serif;
 }
@@ -235,14 +210,13 @@
 
 .quotation-logo {
   width: 60px;
-  height: auto;
   margin-bottom: 5px;
 }
 
 .quotation-header h3 {
   margin: 0;
-  color: #222;
   font-size: 20px;
+  color: #222;
 }
 
 .quotation-header .tagline {
@@ -261,9 +235,9 @@
 }
 
 .quotation-table td:first-child {
+  width: 55%;
   font-weight: 600;
   color: #444;
-  width: 55%;
 }
 
 .quotation-footer {
@@ -282,14 +256,3 @@
   font-size: 13px;
   color: #333;
 }
-
-
-
-
-
-
-
-
-
-
-
