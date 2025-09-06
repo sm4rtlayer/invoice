@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+document.querySelectorAll(".selectPackageBtn").forEach(btn => btn.remove());
   // ========================
   // Package selection logic
   // ========================
@@ -78,5 +79,6 @@ document.querySelectorAll(".card").forEach(card => {
     alert("Quotation request submitted successfully!");
   });
 });
+
 
 
