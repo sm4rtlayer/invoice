@@ -18,12 +18,14 @@
 
     <body>
 
-<header class="site-header">
-    <a href="index.html" class="logo">
-        <img src="images/gamay_logo_brand.png" alt="Gamay Solarista Logo">
-    </a>
+        <header class="site-header">
+            <a href="index.html"
+               class="logo">
+                <img src="images/gamay_logo_brand.png"
+                     alt="Gamay Solarista Logo">
+            </a>
 
-</header>
+        </header>
 
         <!-- Icon Links Section -->
         <section class="icon-links"
@@ -72,100 +74,137 @@
             </ul>
         </section>
 
-<main class="heroQuotation"> 
-                    <div id="userBox" class="user-box">
-                    <img id="userPhoto" src="" alt="User Photo">
-                    <span id="userName"></span>
-                    <button id="logoutBtn">Logout</button>
+        <main class="heroQuotation">
+            <div id="userBox"
+                 class="user-box">
+                <img id="userPhoto"
+                     src=""
+                     alt="User Photo">
+                <span id="userName"></span>
+                <button id="logoutBtn">Logout</button>
+            </div>
+            <form class="quotation-form"
+                  id="quotationForm">
+                <h2>Quotation Request</h2>
+
+                <!-- Customer Info -->
+                <h3>Customer Information</h3>
+                <label for="name">Name:</label>
+                <input type="text"
+                       id="name"
+                       name="name"
+                       readonly>
+
+                <label for="email">Email:</label>
+                <input type="email"
+                       id="email"
+                       name="email"
+                       readonly>
+
+                <!-- Available Packages -->
+                <h3>Available Packages</h3>
+                <div class="package-buttons">
+                    <button type="button"
+                            id="openOffGrid">Off-Grid</button>
+                    <button type="button"
+                            id="openOnGrid">On-Grid</button>
                 </div>
-  <form class="quotation-form" id="quotationForm">
-    <h2>Quotation Request</h2>
 
-    <!-- Customer Info -->
-    <h3>Customer Information</h3>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" readonly>
+                <!-- Forecast Billing -->
+                <h3>Forecast Billing</h3>
+                <p id="estimatedBilling">Select a package to see estimated billing.</p>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" readonly>
+                <!-- Submit -->
+                <button type="submit">Submit</button>
+            </form>
+        </main>
 
-    <!-- Available Packages -->
-    <h3>Available Packages</h3>
-    <div class="package-buttons">
-      <button type="button" id="openOffGrid">Off-Grid</button>
-      <button type="button" id="openOnGrid">On-Grid</button>
-    </div>
+        <!-- Off-Grid Modal -->
+        <div id="offGridModal"
+             class="modalQuote">
+            <div class="modalQuote-content">
+                <span class="close"
+                      data-close="offGridModal">&times;</span>
+                <h3>Off-Grid Packages</h3>
+                <div class="package-cards">
+                    <div class="card">
+                        <img src="images/offgrid1.jpg"
+                             alt="Off-Grid Set 1">
+                        <h4>Set 1</h4>
+                        <p>Capacity: 1000 W</p>
+                        <p>Price: ₱50,000</p>
+                        <button class="selectPackageBtn"
+                                data-package="Off-Grid Set 1">Select</button>
+                    </div>
+                    <div class="card">
+                        <img src="images/offgrid2.jpg"
+                             alt="Off-Grid Set 2">
+                        <h4>Set 2</h4>
+                        <p>Capacity: 2500 W</p>
+                        <p>Price: ₱100,000</p>
+                        <button class="selectPackageBtn"
+                                data-package="Off-Grid Set 2">Select</button>
+                    </div>
+                    <div class="card">
+                        <img src="images/offgrid3.jpg"
+                             alt="Off-Grid Set 3">
+                        <h4>Set 3</h4>
+                        <p>Capacity: 3000 W</p>
+                        <p>Price: ₱150,000</p>
+                        <button class="selectPackageBtn"
+                                data-package="Off-Grid Set 3">Select</button>
+                    </div>
+                    <div class="card">
+                        <img src="images/offgrid4.jpg"
+                             alt="Off-Grid Set 4">
+                        <h4>Set 4</h4>
+                        <p>Capacity: 5000 W</p>
+                        <p>Price: ₱185,000</p>
+                        <button class="selectPackageBtn"
+                                data-package="Off-Grid Set 4">Select</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Forecast Billing -->
-    <h3>Forecast Billing</h3>
-    <p id="estimatedBilling">Select a package to see estimated billing.</p>
-
-    <!-- Submit -->
-    <button type="submit">Submit</button>
-  </form>
-</main>
-
-<!-- Off-Grid Modal -->
-<div id="offGridModal" class="modalQuote">
-  <div class="modalQuote-content">
-    <span class="close" data-close="offGridModal">&times;</span>
-    <h3>Off-Grid Packages</h3>
-    <div class="package-cards">
-      <div class="card">
-        <img src="images/offgrid1.jpg" alt="Off-Grid Set 1">
-        <h4>Set 1</h4>
-        <p>Capacity: 3 kWh</p>
-        <p>Price: $2,000</p>
-        <button class="selectPackageBtn" data-package="Off-Grid Set 1">Select</button>
-      </div>
-      <div class="card">
-        <img src="images/offgrid2.jpg" alt="Off-Grid Set 2">
-        <h4>Set 2</h4>
-        <p>Capacity: 5 kWh</p>
-        <p>Price: $3,500</p>
-        <button class="selectPackageBtn" data-package="Off-Grid Set 2">Select</button>
-      </div>
-      <div class="card">
-        <img src="images/offgrid3.jpg" alt="Off-Grid Set 3">
-        <h4>Set 3</h4>
-        <p>Capacity: 7 kWh</p>
-        <p>Price: $5,000</p>
-        <button class="selectPackageBtn" data-package="Off-Grid Set 3">Select</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- On-Grid Modal -->
-<div id="onGridModal" class="modalQuote">
-  <div class="modalQuote-content">
-    <span class="close" data-close="onGridModal">&times;</span>
-    <h3>On-Grid Packages</h3>
-    <div class="package-cards">
-      <div class="card">
-        <img src="images/ongrid1.jpg" alt="On-Grid Set 1">
-        <h4>Set 1</h4>
-        <p>Capacity: 3 kWh</p>
-        <p>Price: $1,800</p>
-        <button class="selectPackageBtn" data-package="On-Grid Set 1">Select</button>
-      </div>
-      <div class="card">
-        <img src="images/ongrid2.jpg" alt="On-Grid Set 2">
-        <h4>Set 2</h4>
-        <p>Capacity: 6 kWh</p>
-        <p>Price: $3,200</p>
-        <button class="selectPackageBtn" data-package="On-Grid Set 2">Select</button>
-      </div>
-      <div class="card">
-        <img src="images/ongrid3.jpg" alt="On-Grid Set 3">
-        <h4>Set 3</h4>
-        <p>Capacity: 10 kWh</p>
-        <p>Price: $4,500</p>
-        <button class="selectPackageBtn" data-package="On-Grid Set 3">Select</button>
-      </div>
-    </div>
-  </div>
-</div>
+        <!-- On-Grid Modal -->
+        <div id="onGridModal"
+             class="modalQuote">
+            <div class="modalQuote-content">
+                <span class="close"
+                      data-close="onGridModal">&times;</span>
+                <h3>On-Grid Packages</h3>
+                <div class="package-cards">
+                    <div class="card">
+                        <img src="images/ongrid1.jpg"
+                             alt="On-Grid Set 1">
+                        <h4>Set 1</h4>
+                        <p>Capacity: 3 kWh</p>
+                        <p>Price: $1,800</p>
+                        <button class="selectPackageBtn"
+                                data-package="On-Grid Set 1">Select</button>
+                    </div>
+                    <div class="card">
+                        <img src="images/ongrid2.jpg"
+                             alt="On-Grid Set 2">
+                        <h4>Set 2</h4>
+                        <p>Capacity: 6 kWh</p>
+                        <p>Price: $3,200</p>
+                        <button class="selectPackageBtn"
+                                data-package="On-Grid Set 2">Select</button>
+                    </div>
+                    <div class="card">
+                        <img src="images/ongrid3.jpg"
+                             alt="On-Grid Set 3">
+                        <h4>Set 3</h4>
+                        <p>Capacity: 10 kWh</p>
+                        <p>Price: $4,500</p>
+                        <button class="selectPackageBtn"
+                                data-package="On-Grid Set 3">Select</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="quotation.js"></script>
 
@@ -353,11 +392,3 @@
     </body>
 
 </html>
-
-
-
-
-
-
-
-
