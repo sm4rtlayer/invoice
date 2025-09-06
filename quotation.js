@@ -44,42 +44,63 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+let lastSelected = null; // store last selected package details
+
+// Helper: format money with ₱ and 2 decimals
+function formatCurrency(amount) {
+  return "₱" + amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function updateForecast() {
+  if (!lastSelected) return; // do nothing if no package selected yet
+
+  const { selectedPackage, capacity, price } = lastSelected;
+
+  // Get electricity rate from input
+  const electricityRate = parseFloat(document.getElementById("electricityRate").value) || 10;
+  const daysPerMonth = 30;
+
+  // Calculate savings
+  const monthlySavings = capacity * electricityRate * daysPerMonth;
+  const paybackMonths = monthlySavings > 0 ? (price / monthlySavings) : 0;
+
+  // Update forecast billing
+  const estimatedBilling = document.getElementById("estimatedBilling");
+  estimatedBilling.innerHTML =
+    `<div>
+      <p><strong>Selected:</strong> ${selectedPackage}</p>
+      <p><strong>Capacity:</strong> ${capacity} kWh</p>
+      <p><strong>Estimated Cost:</strong> ${formatCurrency(price)}</p>
+      <p style="color:green;"><strong>Estimated Savings per Month:</strong> ${formatCurrency(monthlySavings)}</p>
+      <p style="color:#007BFF;"><strong>Payback Period:</strong> ${paybackMonths.toFixed(1)} months</p>
+    </div>`;
+}
+
+// Handle package selection
 document.querySelectorAll(".card").forEach(card => {
   card.addEventListener("click", () => {
     const selectedPackage = card.querySelector("h4").textContent;
     const capacityText = card.querySelector("p:nth-of-type(1)").textContent;
     const priceText = card.querySelector("p:nth-of-type(2)").textContent;
 
-    // Extract numbers
     const capacity = parseFloat(capacityText.replace(/[^0-9.]/g, ""));
     const price = parseFloat(priceText.replace(/[^0-9.]/g, ""));
 
-    // ⚡ Get electricity rate dynamically from input
-    const electricityRate = parseFloat(document.getElementById("electricityRate").value) || 10;
-    const daysPerMonth = 30;
+    // Save for later use
+    lastSelected = { selectedPackage, capacity, price };
 
-    // ⚡ Calculate estimated monthly savings
-    const monthlySavings = capacity * electricityRate * daysPerMonth;
-
-    // Payback period
-    const paybackMonths = monthlySavings > 0 ? (price / monthlySavings) : 0;
-
-    // Update forecast billing
-    const estimatedBilling = document.getElementById("estimatedBilling");
-    estimatedBilling.innerHTML =
-      `<div>
-        <p><strong>Selected:</strong> ${selectedPackage}</p>
-        <p><strong>Capacity:</strong> ${capacity} kWh</p>
-        <p><strong>Estimated Cost:</strong> ₱${price.toLocaleString()}</p>
-        <p style="color:green;"><strong>Estimated Savings per Month:</strong> ₱${monthlySavings.toLocaleString()}</p>
-        <p style="color:#007BFF;"><strong>Payback Period:</strong> ${paybackMonths.toFixed(1)} months</p>
-      </div>`;
+    // Update forecast
+    updateForecast();
 
     // Close modal
     const modalId = card.closest(".modalQuote").id;
     document.getElementById(modalId).classList.remove("show");
   });
 });
+
+// Auto-update when electricity rate input changes
+document.getElementById("electricityRate").addEventListener("input", updateForecast);
+
 
 
   // ========================
@@ -91,6 +112,7 @@ document.querySelectorAll(".card").forEach(card => {
     alert("Quotation request submitted successfully!");
   });
 });
+
 
 
 
