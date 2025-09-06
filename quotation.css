@@ -60,7 +60,10 @@
 
 /* Package Selection Buttons */
 .package-buttons {
-  display: none;
+    display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
 .package-buttons buttonOngrid {
@@ -189,4 +192,5 @@
     width: 100%;
   }
 }
+
 
