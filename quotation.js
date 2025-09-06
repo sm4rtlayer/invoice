@@ -19,17 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // ========================
   // Modal open functionality
   // ========================
-  if (openOffGridBtn) {
-    openOffGridBtn.addEventListener("click", () => {
-      offGridModal.classList.add("show");
-    });
-  }
+  openOffGridBtn.addEventListener("click", () => {
+    offGridModal.classList.add("show");
+  });
 
-  if (openOnGridBtn) {
-    openOnGridBtn.addEventListener("click", () => {
-      onGridModal.classList.add("show");
-    });
-  }
+  openOnGridBtn.addEventListener("click", () => {
+    onGridModal.classList.add("show");
+  });
 
   // ========================
   // Modal close functionality
@@ -48,16 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ========================
-  // Forecast Calculation
-  // ========================
   let lastSelected = null; // store last selected package details
 
   // Helper: format money with ₱ and 2 decimals
   function formatCurrency(amount) {
-    return "₱" + amount.toLocaleString(undefined, { 
-      minimumFractionDigits: 2, 
-      maximumFractionDigits: 2 
+    return "₱" + amount.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
     });
   }
 
@@ -68,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const { selectedPackage, capacity, price } = lastSelected;
+    const { selectedPackage, capacity, price, gridType } = lastSelected;
 
     // Get configurable inputs
     const electricityRate = parseFloat(document.getElementById("electricityRate").value) || 10;
@@ -88,54 +81,66 @@ document.addEventListener("DOMContentLoaded", () => {
     const paybackMonths = monthlySavings > 0 ? (price / monthlySavings) : 0;
 
     // Update forecast billing (Quotation Format)
-// Update forecast billing (Quotation Format)
-estimatedBilling.innerHTML = `
-  <div class="quotation-box">
-    <div class="quotation-header">
-      <img src="images/logo.png" alt="Company Logo" class="quotation-logo" />
-      <p class="tagline">Powering Tomorrow, Today ⚡</p>
-    </div>
+    estimatedBilling.innerHTML = `
+      <div class="quotation-box">
+        <div class="quotation-header">
+          <img src="images/logo.png" alt="Company Logo" class="quotation-logo" />
+          <h3>Gamay Solarista</h3>
+          <p class="tagline">Powering Tomorrow, Today ⚡</p>
+        </div>
 
-    <h4>📋 Quotation Summary</h4>
-    <table class="quotation-table">
-      <tr>
-        <td><strong>Selected Package</strong></td>
-        <td>${selectedPackage}</td>
-      </tr>
-      <tr>
-        <td><strong>Capacity</strong></td>
-        <td>${capacityKW.toFixed(2)} kW</td>
-      </tr>
-      <tr>
-        <td><strong>Estimated Cost</strong></td>
-        <td>${formatCurrency(price)}</td>
-      </tr>
-      <tr>
-        <td><strong>Estimated Production</strong></td>
-        <td>${monthlyProduction.toFixed(1)} kWh / month</td>
-      </tr>
-      <tr>
-        <td><strong style="color:green;">Estimated Savings</strong></td>
-        <td style="color:green;">${formatCurrency(monthlySavings)} / month</td>
-      </tr>
-      <tr>
-        <td><strong style="color:#007BFF;">Payback Period</strong></td>
-        <td style="color:#007BFF;">${paybackMonths.toFixed(1)} months</td>
-      </tr>
-    </table>
+        <h4>📋 Quotation Summary</h4>
+        <table class="quotation-table">
+          <tr>
+            <td><strong>Package Type</strong></td>
+            <td>${gridType}</td>
+          </tr>
+          <tr>
+            <td><strong>Selected Package</strong></td>
+            <td>${selectedPackage}</td>
+          </tr>
+          <tr>
+            <td><strong>Capacity</strong></td>
+            <td>${capacityKW.toFixed(2)} kW</td>
+          </tr>
+          <tr>
+            <td><strong>Estimated Cost</strong></td>
+            <td>${formatCurrency(price)}</td>
+          </tr>
+          <tr>
+            <td><strong>Estimated Production</strong></td>
+            <td>${monthlyProduction.toFixed(1)} kWh / month</td>
+          </tr>
+          <tr>
+            <td><strong style="color:green;">Estimated Savings</strong></td>
+            <td style="color:green;">${formatCurrency(monthlySavings)} / month</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#007BFF;">Payback Period</strong></td>
+            <td style="color:#007BFF;">${paybackMonths.toFixed(1)} months</td>
+          </tr>
+        </table>
 
-    <div class="quotation-footer">
-      <p class="quotation-note">⚠ This is an estimated forecast. Actual savings may vary depending on usage, weather, and installation.</p>
-      <p class="quotation-contact">📞 Contact us: info@gamaysolarista.com | +63 912 345 6789</p>
-    </div>
-  </div>
-`;
+        <h4>👤 Customer Information</h4>
+        <form id="quotationForm">
+          <label for="custName">Full Name</label>
+          <input type="text" id="custName" name="custName" required placeholder="Enter your name" />
 
+          <label for="custEmail">Email Address</label>
+          <input type="email" id="custEmail" name="custEmail" required placeholder="Enter your email" />
+
+          <button type="submit" class="submit-btn">Request Quotation</button>
+        </form>
+
+        <div class="quotation-footer">
+          <p class="quotation-note">⚠ This is an estimated forecast. Actual savings may vary depending on usage, weather, and installation.</p>
+          <p class="quotation-contact">📞 Contact us: info@gamaysolarista.com | +63 912 345 6789</p>
+        </div>
+      </div>
+    `;
   }
 
-  // ========================
   // Handle package selection
-  // ========================
   document.querySelectorAll(".card").forEach(card => {
     card.addEventListener("click", () => {
       const selectedPackage = card.querySelector("h4").textContent;
@@ -145,30 +150,30 @@ estimatedBilling.innerHTML = `
       const capacity = parseFloat(capacityText.replace(/[^0-9.]/g, "")); // W
       const price = parseFloat(priceText.replace(/[^0-9.]/g, "")); // ₱
 
-      lastSelected = { selectedPackage, capacity, price };
+      const gridType = card.closest("#offGridModal") ? "Off-Grid" : "On-Grid";
+
+      lastSelected = { selectedPackage, capacity, price, gridType };
 
       updateForecast();
 
-      // Close modal
       const modalId = card.closest(".modalQuote").id;
       document.getElementById(modalId).classList.remove("show");
     });
   });
 
-  // ========================
   // Auto-update when inputs change
-  // ========================
   document.getElementById("electricityRate").addEventListener("input", updateForecast);
   document.getElementById("sunHours").addEventListener("input", updateForecast);
 
   // ========================
   // Form submission (demo)
   // ========================
-  const quotationForm = document.getElementById("quotationForm");
-  quotationForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    alert("Quotation request submitted successfully!");
+  document.addEventListener("submit", (e) => {
+    if (e.target && e.target.id === "quotationForm") {
+      e.preventDefault();
+      const name = document.getElementById("custName").value;
+      const email = document.getElementById("custEmail").value;
+      alert(`Quotation request submitted!\nName: ${name}\nEmail: ${email}`);
+    }
   });
 });
-
-
