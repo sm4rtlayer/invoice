@@ -51,7 +51,6 @@ function formatCurrency(amount) {
   return "₱" + amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
-// Update forecast billing (only if a package was selected first)
 function updateForecast() {
   if (!lastSelected) {
     document.getElementById("estimatedBilling").innerHTML =
@@ -61,12 +60,21 @@ function updateForecast() {
 
   const { selectedPackage, capacity, price } = lastSelected;
 
-  // Get electricity rate from input
+  // Get configurable inputs
   const electricityRate = parseFloat(document.getElementById("electricityRate").value) || 10;
+  const sunHoursPerDay = parseFloat(document.getElementById("sunHours").value) || 4;
   const daysPerMonth = 30;
 
-  // Calculate savings
-  const monthlySavings = capacity * electricityRate * daysPerMonth;
+  // Convert W → kW
+  const capacityKW = capacity / 1000;
+
+  // Monthly production in kWh
+  const monthlyProduction = capacityKW * sunHoursPerDay * daysPerMonth;
+
+  // Monthly savings
+  const monthlySavings = monthlyProduction * electricityRate;
+
+  // Payback period
   const paybackMonths = monthlySavings > 0 ? (price / monthlySavings) : 0;
 
   // Update forecast billing
@@ -74,8 +82,9 @@ function updateForecast() {
   estimatedBilling.innerHTML =
     `<div>
       <p><strong>Selected:</strong> ${selectedPackage}</p>
-      <p><strong>Capacity:</strong> ${capacity} W </p>
+      <p><strong>Capacity:</strong> ${capacityKW.toFixed(2)} kW</p>
       <p><strong>Estimated Cost:</strong> ${formatCurrency(price)}</p>
+      <p><strong>Estimated Production:</strong> ${monthlyProduction.toFixed(1)} kWh/month</p>
       <p style="color:green;"><strong>Estimated Savings per Month:</strong> ${formatCurrency(monthlySavings)}</p>
       <p style="color:#007BFF;"><strong>Payback Period:</strong> ${paybackMonths.toFixed(1)} months</p>
     </div>`;
@@ -88,24 +97,22 @@ document.querySelectorAll(".card").forEach(card => {
     const capacityText = card.querySelector("p:nth-of-type(1)").textContent;
     const priceText = card.querySelector("p:nth-of-type(2)").textContent;
 
-    const capacity = parseFloat(capacityText.replace(/[^0-9.]/g, ""));
-    const price = parseFloat(priceText.replace(/[^0-9.]/g, ""));
+    const capacity = parseFloat(capacityText.replace(/[^0-9.]/g, "")); // W
+    const price = parseFloat(priceText.replace(/[^0-9.]/g, "")); // ₱
 
-    // Save selected package for later use
     lastSelected = { selectedPackage, capacity, price };
 
-    // Update forecast immediately with current electricity rate
     updateForecast();
 
-    // Close modal
     const modalId = card.closest(".modalQuote").id;
     document.getElementById(modalId).classList.remove("show");
   });
 });
 
-// Auto-update forecast only after package selection
+// Auto-update when inputs change
 document.getElementById("electricityRate").addEventListener("input", updateForecast);
-  
+document.getElementById("sunHours").addEventListener("input", updateForecast);
+
   // ========================
   // Form submission (demo)
   // ========================
@@ -115,6 +122,7 @@ document.getElementById("electricityRate").addEventListener("input", updateForec
     alert("Quotation request submitted successfully!");
   });
 });
+
 
 
 
