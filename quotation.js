@@ -93,7 +93,6 @@ estimatedBilling.innerHTML = `
   <div class="quotation-box">
     <div class="quotation-header">
       <img src="images/logo.png" alt="Company Logo" class="quotation-logo" />
-      <h3>Gamay Solarista</h3>
       <p class="tagline">Powering Tomorrow, Today ⚡</p>
     </div>
 
@@ -171,4 +170,5 @@ estimatedBilling.innerHTML = `
     alert("Quotation request submitted successfully!");
   });
 });
+
 
