@@ -179,12 +179,20 @@
 }
 
 
+/* Hide the Select button */
 .selectPackageBtn {
   display: none;
 }
 
-.selectPackageBtn:hover {
-  background-color: #218838;
+/* Make the whole card look clickable */
+.card {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 /* Responsive */
@@ -198,6 +206,7 @@
     width: 100%;
   }
 }
+
 
 
 
