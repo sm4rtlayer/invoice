@@ -47,45 +47,27 @@ document.addEventListener("DOMContentLoaded", () => {
   // ========================
   // Package selection logic
   // ========================
-  const packageButtons = document.querySelectorAll(".selectPackageBtn");
+ document.querySelectorAll(".selectPackageBtn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const selectedPackage = btn.getAttribute("data-package");
+    const card = btn.closest(".card");
+    const capacityText = card.querySelector("p:nth-of-type(1)").textContent; // e.g. "Capacity: 5 kWh"
+    const priceText = card.querySelector("p:nth-of-type(2)").textContent;   // e.g. "Price: $3,500"
 
-  packageButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      const packageName = button.getAttribute("data-package");
+    // Extract numbers safely
+    const capacity = parseFloat(capacityText.replace(/[^0-9.]/g, ""));
+    const price = parseFloat(priceText.replace(/[^0-9.]/g, ""));
 
-      // Example pricing & capacity (could be fetched from DB)
-      let billingText = "";
-      switch (packageName) {
-        case "Off-Grid Set 1":
-          billingText = "You selected Off-Grid Set 1 (3 kWh, $2,000). Estimated monthly bill savings: $50–$70.";
-          break;
-        case "Off-Grid Set 2":
-          billingText = "You selected Off-Grid Set 2 (5 kWh, $3,500). Estimated monthly bill savings: $90–$120.";
-          break;
-        case "Off-Grid Set 3":
-          billingText = "You selected Off-Grid Set 3 (7 kWh, $5,000). Estimated monthly bill savings: $130–$160.";
-          break;
-        case "On-Grid Set 1":
-          billingText = "You selected On-Grid Set 1 (3 kWh, $1,800). Estimated monthly bill savings: $40–$60.";
-          break;
-        case "On-Grid Set 2":
-          billingText = "You selected On-Grid Set 2 (6 kWh, $3,200). Estimated monthly bill savings: $100–$140.";
-          break;
-        case "On-Grid Set 3":
-          billingText = "You selected On-Grid Set 3 (10 kWh, $4,500). Estimated monthly bill savings: $160–$200.";
-          break;
-        default:
-          billingText = "No package selected.";
-      }
+    // Update billing dynamically with Peso symbol
+    const estimatedBilling = document.getElementById("estimatedBilling");
+    estimatedBilling.textContent = 
+      `Selected: ${selectedPackage} | Capacity: ${capacity} kWh | Estimated Cost: ₱${price.toLocaleString()}`;
 
-      estimatedBilling.textContent = billingText;
-
-      // Close the modal after selection
-      const modal = button.closest(".modalQuote");
-      modal.classList.remove("show");
-    });
+    // Close modal
+    const modalId = btn.closest(".modalQuote").id;
+    document.getElementById(modalId).classList.remove("show");
   });
-
+});
   // ========================
   // Form submission (demo)
   // ========================
