@@ -44,11 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-document.querySelectorAll(".selectPackageBtn").forEach(btn => btn.remove());
-  // ========================
-  // Package selection logic
-  // ========================
-// Handle package selection by clicking the entire card
 document.querySelectorAll(".card").forEach(card => {
   card.addEventListener("click", () => {
     const selectedPackage = card.querySelector("h4").textContent;
@@ -59,15 +54,29 @@ document.querySelectorAll(".card").forEach(card => {
     const capacity = parseFloat(capacityText.replace(/[^0-9.]/g, ""));
     const price = parseFloat(priceText.replace(/[^0-9.]/g, ""));
 
-    // Update billing with Peso
+    // ⚡ Calculate estimated monthly savings using CONFIG
+    const monthlySavings = capacity * CONFIG.electricityRate * CONFIG.daysPerMonth;
+
+    // Payback period
+    const paybackMonths = monthlySavings > 0 ? (price / monthlySavings) : 0;
+
+    // Update forecast billing
     const estimatedBilling = document.getElementById("estimatedBilling");
-    estimatedBilling.textContent =
-      `Selected: ${selectedPackage} | Capacity: ${capacity} W | Estimated Cost: ₱${price.toLocaleString()}`;
+    estimatedBilling.innerHTML =
+      `<div>
+        <p><strong>Selected:</strong> ${selectedPackage}</p>
+        <p><strong>Capacity:</strong> ${capacity} kWh</p>
+        <p><strong>Estimated Cost:</strong> ₱${price.toLocaleString()}</p>
+        <p style="color:green;"><strong>Estimated Savings per Month:</strong> ₱${monthlySavings.toLocaleString()}</p>
+        <p style="color:#007BFF;"><strong>Payback Period:</strong> ${paybackMonths.toFixed(1)} months</p>
+      </div>`;
 
     // Close modal
     const modalId = card.closest(".modalQuote").id;
     document.getElementById(modalId).classList.remove("show");
   });
+});
+
 });
 
   // ========================
@@ -79,6 +88,7 @@ document.querySelectorAll(".card").forEach(card => {
     alert("Quotation request submitted successfully!");
   });
 });
+
 
 
 
