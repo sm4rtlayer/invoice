@@ -19,13 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // ========================
   // Modal open functionality
   // ========================
-  openOffGridBtn.addEventListener("click", () => {
-    offGridModal.classList.add("show");
-  });
+  if (openOffGridBtn) {
+    openOffGridBtn.addEventListener("click", () => {
+      offGridModal.classList.add("show");
+    });
+  }
 
-  openOnGridBtn.addEventListener("click", () => {
-    onGridModal.classList.add("show");
-  });
+  if (openOnGridBtn) {
+    openOnGridBtn.addEventListener("click", () => {
+      onGridModal.classList.add("show");
+    });
+  }
 
   // ========================
   // Modal close functionality
@@ -44,106 +48,116 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-let lastSelected = null; // store last selected package details
+  // ========================
+  // Forecast Calculation
+  // ========================
+  let lastSelected = null; // store last selected package details
 
-// Helper: format money with ₱ and 2 decimals
-function formatCurrency(amount) {
-  return "₱" + amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
-
-function updateForecast() {
-  if (!lastSelected) {
-    document.getElementById("estimatedBilling").innerHTML =
-      `<p style="color:red;">⚠ Please select a package first.</p>`;
-    return;
+  // Helper: format money with ₱ and 2 decimals
+  function formatCurrency(amount) {
+    return "₱" + amount.toLocaleString(undefined, { 
+      minimumFractionDigits: 2, 
+      maximumFractionDigits: 2 
+    });
   }
 
-  const { selectedPackage, capacity, price } = lastSelected;
+  function updateForecast() {
+    if (!lastSelected) {
+      estimatedBilling.innerHTML =
+        `<p style="color:red;">⚠ Please select a package first.</p>`;
+      return;
+    }
 
-  // Get configurable inputs
-  const electricityRate = parseFloat(document.getElementById("electricityRate").value) || 10;
-  const sunHoursPerDay = parseFloat(document.getElementById("sunHours").value) || 4;
-  const daysPerMonth = 30;
+    const { selectedPackage, capacity, price } = lastSelected;
 
-  // Convert W → kW
-  const capacityKW = capacity / 1000;
+    // Get configurable inputs
+    const electricityRate = parseFloat(document.getElementById("electricityRate").value) || 10;
+    const sunHoursPerDay = parseFloat(document.getElementById("sunHours").value) || 4;
+    const daysPerMonth = 30;
 
-  // Monthly production in kWh
-  const monthlyProduction = capacityKW * sunHoursPerDay * daysPerMonth;
+    // Convert W → kW
+    const capacityKW = capacity / 1000;
 
-  // Monthly savings
-  const monthlySavings = monthlyProduction * electricityRate;
+    // Monthly production in kWh
+    const monthlyProduction = capacityKW * sunHoursPerDay * daysPerMonth;
 
-  // Payback period
-  const paybackMonths = monthlySavings > 0 ? (price / monthlySavings) : 0;
+    // Monthly savings
+    const monthlySavings = monthlyProduction * electricityRate;
 
-  // Update forecast billing
-  const estimatedBilling = document.getElementById("estimatedBilling");
-  estimatedBilling.innerHTML =
-   <div class="quotation-box">
-    <div class="quotation-header">
-      <img src="images/logo.png" alt="Company Logo" class="quotation-logo" />
-      <h3>Gamay Solarista</h3>
-      <p class="tagline">Powering Tomorrow, Today ⚡</p>
-    </div>
+    // Payback period
+    const paybackMonths = monthlySavings > 0 ? (price / monthlySavings) : 0;
 
-    <h4>📋 Quotation Summary</h4>
-    <table class="quotation-table">
-      <tr>
-        <td><strong>Selected Package</strong></td>
-        <td>${selectedPackage}</td>
-      </tr>
-      <tr>
-        <td><strong>Capacity</strong></td>
-        <td>${capacityKW.toFixed(2)} kW</td>
-      </tr>
-      <tr>
-        <td><strong>Estimated Cost</strong></td>
-        <td>${formatCurrency(price)}</td>
-      </tr>
-      <tr>
-        <td><strong>Estimated Production</strong></td>
-        <td>${monthlyProduction.toFixed(1)} kWh / month</td>
-      </tr>
-      <tr>
-        <td><strong style="color:green;">Estimated Savings</strong></td>
-        <td style="color:green;">${formatCurrency(monthlySavings)} / month</td>
-      </tr>
-      <tr>
-        <td><strong style="color:#007BFF;">Payback Period</strong></td>
-        <td style="color:#007BFF;">${paybackMonths.toFixed(1)} months</td>
-      </tr>
-    </table>
+    // Update forecast billing (Quotation Format)
+    estimatedBilling.innerHTML = `
+      <div class="quotation-box">
+        <div class="quotation-header">
+          <img src="images/logo.png" alt="Company Logo" class="quotation-logo" />
+          <h3>Gamay Solarista</h3>
+          <p class="tagline">Powering Tomorrow, Today ⚡</p>
+        </div>
 
-    <div class="quotation-footer">
-      <p class="quotation-note">⚠ This is an estimated forecast. Actual savings may vary depending on usage, weather, and installation.</p>
-      <p class="quotation-contact">📞 Contact us: info@gamaysolarista.com | +63 912 345 6789</p>
-    </div>
-  </div>`;
-}
+        <h4>📋 Quotation Summary</h4>
+        <table class="quotation-table">
+          <tr>
+            <td><strong>Selected Package</strong></td>
+            <td>${selectedPackage}</td>
+          </tr>
+          <tr>
+            <td><strong>Capacity</strong></td>
+            <td>${capacityKW.toFixed(2)} kW</td>
+          </tr>
+          <tr>
+            <td><strong>Estimated Cost</strong></td>
+            <td>${formatCurrency(price)}</td>
+          </tr>
+          <tr>
+            <td><strong>Estimated Production</strong></td>
+            <td>${monthlyProduction.toFixed(1)} kWh / month</td>
+          </tr>
+          <tr>
+            <td><strong style="color:green;">Estimated Savings</strong></td>
+            <td style="color:green;">${formatCurrency(monthlySavings)} / month</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#007BFF;">Payback Period</strong></td>
+            <td style="color:#007BFF;">${paybackMonths.toFixed(1)} months</td>
+          </tr>
+        </table>
 
-// Handle package selection
-document.querySelectorAll(".card").forEach(card => {
-  card.addEventListener("click", () => {
-    const selectedPackage = card.querySelector("h4").textContent;
-    const capacityText = card.querySelector("p:nth-of-type(1)").textContent;
-    const priceText = card.querySelector("p:nth-of-type(2)").textContent;
+        <div class="quotation-footer">
+          <p class="quotation-note">⚠ This is an estimated forecast. Actual savings may vary depending on usage, weather, and installation.</p>
+          <p class="quotation-contact">📞 Contact us: info@gamaysolarista.com | +63 912 345 6789</p>
+        </div>
+      </div>`;
+  }
 
-    const capacity = parseFloat(capacityText.replace(/[^0-9.]/g, "")); // W
-    const price = parseFloat(priceText.replace(/[^0-9.]/g, "")); // ₱
+  // ========================
+  // Handle package selection
+  // ========================
+  document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+      const selectedPackage = card.querySelector("h4").textContent;
+      const capacityText = card.querySelector("p:nth-of-type(1)").textContent;
+      const priceText = card.querySelector("p:nth-of-type(2)").textContent;
 
-    lastSelected = { selectedPackage, capacity, price };
+      const capacity = parseFloat(capacityText.replace(/[^0-9.]/g, "")); // W
+      const price = parseFloat(priceText.replace(/[^0-9.]/g, "")); // ₱
 
-    updateForecast();
+      lastSelected = { selectedPackage, capacity, price };
 
-    const modalId = card.closest(".modalQuote").id;
-    document.getElementById(modalId).classList.remove("show");
+      updateForecast();
+
+      // Close modal
+      const modalId = card.closest(".modalQuote").id;
+      document.getElementById(modalId).classList.remove("show");
+    });
   });
-});
 
-// Auto-update when inputs change
-document.getElementById("electricityRate").addEventListener("input", updateForecast);
-document.getElementById("sunHours").addEventListener("input", updateForecast);
+  // ========================
+  // Auto-update when inputs change
+  // ========================
+  document.getElementById("electricityRate").addEventListener("input", updateForecast);
+  document.getElementById("sunHours").addEventListener("input", updateForecast);
 
   // ========================
   // Form submission (demo)
@@ -154,13 +168,3 @@ document.getElementById("sunHours").addEventListener("input", updateForecast);
     alert("Quotation request submitted successfully!");
   });
 });
-
-
-
-
-
-
-
-
-
-
